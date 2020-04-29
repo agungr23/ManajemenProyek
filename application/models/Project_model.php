@@ -9,6 +9,8 @@ class Project_model extends CI_Model
     public $price;
     public $image = "default.jpg";
     public $description;
+    public $project_started;
+    public $project_ended;
 
     public function rules()
     {
@@ -23,6 +25,14 @@ class Project_model extends CI_Model
             
             ['field' => 'description',
             'label' => 'Description',
+            'rules' => 'required'],
+
+            ['field' => 'project_started',
+            'label' => 'Project_started',
+            'rules' => 'required'],
+
+            ['field' => 'project_ended',
+            'label' => 'Project_ended',
             'rules' => 'required']
         ];
     }
@@ -45,6 +55,8 @@ class Project_model extends CI_Model
 		$this->price = $post["price"];
 		$this->image = $this->_uploadImage();
         $this->description = $post["description"];
+        $this->project_started = $post["project_started"];
+        $this->project_ended = $post["project_ended"];
         $this->db->insert($this->_table, $this);
     }
 
@@ -63,6 +75,8 @@ class Project_model extends CI_Model
 		}
 
         $this->description = $post["description"];
+        $this->project_started = $post["project_started"];
+        $this->project_ended = $post["project_ended"];
         $this->db->update($this->_table, $this, array('project_id' => $post['id']));
     }
 

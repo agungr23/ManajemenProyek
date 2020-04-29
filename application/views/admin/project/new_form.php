@@ -68,6 +68,24 @@
 								</div>
 							</div>
 
+							<div class="form-group">
+  								<label for="name">Date Start*</label>
+								<input class="form-control <?php echo form_error('project_started') ? 'is-invalid':'' ?>" 
+								type="date" name="project_started" placeholder="Project Started">
+								<div class="invalid-feedback">
+									<?php echo form_error('project_started') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+  								<label for="name">Date Ended*</label>
+								<input class="form-control <?php echo form_error('project_ended') ? 'is-invalid':'' ?>" 
+								type="date" name="project_ended" placeholder="Project Ended">
+								<div class="invalid-feedback">
+									<?php echo form_error('project_ended') ?>
+								</div>
+							</div>
+
 							<input class="btn btn-success" type="submit" name="btn" value="Save" />
 						</form>
 

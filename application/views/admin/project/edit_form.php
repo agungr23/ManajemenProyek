@@ -76,6 +76,14 @@
 								</div>
 							</div>
 
+							<div class="form-group">
+  								<label for="name">Date*</label>
+								<input class="form-control" type="date" name="datestarted" placeholder="Project Started" value="<?php echo $project->project_started ?>">
+								<div class="invalid-feedback">
+									<?php echo form_error('project_started') ?>
+								</div>
+							</div>
+
 							<input class="btn btn-success" type="submit" name="btn" value="Save" />
 						</form>
 
