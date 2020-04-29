@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Product_model extends CI_Model
+class Project_model extends CI_Model
 {
     private $_table = "project";
 
@@ -74,7 +74,7 @@ class Product_model extends CI_Model
 	
 	private function _uploadImage()
 	{
-		$config['upload_path']          = './upload/product/';
+		$config['upload_path']          = './upload/project/';
 		$config['allowed_types']        = 'gif|jpg|png';
 		$config['file_name']            = $this->project_id;
 		$config['overwrite']			= true;
@@ -96,7 +96,7 @@ class Product_model extends CI_Model
 		$project = $this->getById($id);
 		if ($project->image != "default.jpg") {
 			$filename = explode(".", $project->image)[0];
-			return array_map('unlink', glob(FCPATH."upload/product/$filename.*"));
+			return array_map('unlink', glob(FCPATH."upload/project/$filename.*"));
 		}
 	}
 

@@ -28,12 +28,12 @@
 				<div class="card mb-3">
 					<div class="card-header">
 
-						<a href="<?php echo site_url('admin/products/') ?>"><i class="fas fa-arrow-left"></i>
+						<a href="<?php echo site_url('admin/projects/') ?>"><i class="fas fa-arrow-left"></i>
 							Back</a>
 					</div>
 					<div class="card-body">
 
-						<form action="<?php base_url(" admin/product/edit") ?>" method="post"
+						<form action="<?php base_url(" admin/project/edit") ?>" method="post"
 							enctype="multipart/form-data" >
 
 							<input type="hidden" name="id" value="<?php echo $project->project_id?>" />
@@ -41,7 +41,7 @@
 							<div class="form-group">
 								<label for="name">Name*</label>
 								<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
-								 type="text" name="name" placeholder="Product name" value="<?php echo $project->name ?>" />
+								 type="text" name="name" placeholder="Project name" value="<?php echo $project->name ?>" />
 								<div class="invalid-feedback">
 									<?php echo form_error('name') ?>
 								</div>
@@ -50,7 +50,7 @@
 							<div class="form-group">
 								<label for="price">Price</label>
 								<input class="form-control <?php echo form_error('price') ? 'is-invalid':'' ?>"
-								 type="number" name="price" min="0" placeholder="Product price" value="<?php echo $project->price ?>" />
+								 type="number" name="price" min="0" placeholder="Project price" value="<?php echo $project->price ?>" />
 								<div class="invalid-feedback">
 									<?php echo form_error('price') ?>
 								</div>
@@ -70,7 +70,7 @@
 							<div class="form-group">
 								<label for="name">Description*</label>
 								<textarea class="form-control <?php echo form_error('description') ? 'is-invalid':'' ?>"
-								 name="description" placeholder="Product description..."><?php echo $project->description ?></textarea>
+								 name="description" placeholder="Project description..."><?php echo $project->description ?></textarea>
 								<div class="invalid-feedback">
 									<?php echo form_error('description') ?>
 								</div>

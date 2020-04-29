@@ -21,7 +21,7 @@
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/products/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+						<a href="<?php echo site_url('admin/projects/add') ?>"><i class="fas fa-plus"></i> Add New</a>
 					</div>
 					<div class="card-body">
 
@@ -37,7 +37,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($products as $project): ?>
+									<?php foreach ($projects as $project): ?>
 									<tr>
 										<td width="150">
 											<?php echo $project->name ?>
@@ -46,14 +46,14 @@
 											<?php echo $project->price ?>
 										</td>
 										<td>
-											<img src="<?php echo base_url('upload/product/'.$project->image) ?>" width="64" />
+											<img src="<?php echo base_url('upload/project/'.$project->image) ?>" width="64" />
 										</td>
 										<td class="small">
 											<?php echo substr($project->description, 0, 120) ?>...</td>
 										<td width="250">
-											<a href="<?php echo site_url('admin/products/edit/'.$project->project_id) ?>"
+											<a href="<?php echo site_url('admin/projects/edit/'.$project->project_id) ?>"
 											 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-											<a onclick="deleteConfirm('<?php echo site_url('admin/products/delete/'.$project->project_id) ?>')"
+											<a onclick="deleteConfirm('<?php echo site_url('admin/projects/delete/'.$project->project_id) ?>')"
 											 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
 										</td>
 									</tr>
