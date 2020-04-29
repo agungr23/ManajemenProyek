@@ -15,18 +15,18 @@ class Projects extends CI_Controller
 
     public function index()
     {
-        $data["projects"] = $this->product_model->getAll();
+        $data["projects"] = $this->project_model->getAll();
         $this->load->view("admin/project/list", $data);
     }
 
     public function add()
     {
-        $product = $this->project_model;
+        $project = $this->project_model;
         $validation = $this->form_validation;
         $validation->set_rules($project->rules());
 
         if ($validation->run()) {
-            $product->save();
+            $project->save();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
 
