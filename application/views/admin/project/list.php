@@ -33,6 +33,8 @@
 										<th>Price</th>
 										<th>Photo</th>
 										<th>Description</th>
+										<th>Started</th>
+										<th>Ended</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -50,6 +52,12 @@
 										</td>
 										<td class="small">
 											<?php echo substr($project->description, 0, 120) ?>...</td>
+										<td>
+											<?php echo $project->project_started ?>
+										</td>
+										<td>
+											<?php echo $project->project_ended ?>
+										</td>
 										<td width="250">
 											<a href="<?php echo site_url('admin/projects/edit/'.$project->project_id) ?>"
 											 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>

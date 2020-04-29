@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand navbar-dark static-top bg-dark">
 
     <!-- <a href="<?php echo site_url('admin') ?> -->
-        <img src="../assets/img/kodegiri_putih.png"  a href="<?php echo site_url('admin') ?> width="100" height="45">
+        <img src="http://localhost/manjmproyek/assets/img/kodegiri_putih.png" width="70" height="45" href="<?php echo site_url('admin') ?>">
     <!-- </a> -->
-    <!-- <a class="navbar-brand mr-1" href="<?php echo site_url('admin') ?>"></a> -->
+    <a class="navbar-brand mr-1 ml-2" href="<?php echo site_url('admin') ?>">KODEGIRI</a>
 
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0 mb-3" id="sidebarToggle" href="#">
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0 mb-1" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
     </button>
 

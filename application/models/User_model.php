@@ -43,7 +43,7 @@ class User_model extends CI_Model
         $this->full_name = $post["full_name"];
         $this->email = $post["email"];
         $this->password = password_hash($post["password"], PASSWORD_DEFAULT);
-        $this->role = $post["role"] ?? "customer";
+        $this->role = $post["role"] ?? "admin";
         $this->db->insert($this->_table, $this);
     }
 
