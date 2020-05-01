@@ -2,7 +2,7 @@
 
 class Project_model extends CI_Model
 {
-    private $_table = "project";
+    private $_table1 = "project";
 
     public $project_id;
     public $name;
@@ -39,7 +39,8 @@ class Project_model extends CI_Model
 
     public function getAll()
     {
-        return $this->db->get($this->_table)->result();
+        // return $this->db->get($this->_table1)->result();
+        return $this->db->query("SELECT project.project_id,project.name,project.price,project.image,project.description,project.project_started,project.project_ended,proj_status.status FROM project,proj_status WHERE project.proj_status_id=proj_status.proj_status_id")->result();
     }
     
     public function getById($id)

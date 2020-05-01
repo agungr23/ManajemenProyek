@@ -33,24 +33,23 @@
 					</div>
 					<div class="card-body">
 
-						<form action="<?php base_url(" admin/project/edit") ?>" method="post"
-							enctype="multipart/form-data" >
+						<form action="<?php base_url('admin/project/add') ?>" method="post" enctype="multipart/form-data" >
 
-							<input type="hidden" name="id" value="<?php echo $project->project_id?>" />
+							<input type="hidden" name="id" value="<?php echo $project->project_id ?>" />
 
 							<div class="form-group">
 								<label for="name">Name*</label>
 								<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
-								 type="text" name="name" placeholder="Project name" value="<?php echo $project->name ?>" />
+								 type="text" name="name" placeholder="Project name" value="<?php echo $project->name ?>"/>
 								<div class="invalid-feedback">
 									<?php echo form_error('name') ?>
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="price">Price</label>
+								<label for="price">Price*</label>
 								<input class="form-control <?php echo form_error('price') ? 'is-invalid':'' ?>"
-								 type="number" name="price" min="0" placeholder="Project price" value="<?php echo $project->price ?>" />
+								 type="number" name="price" min="0" placeholder="Project price" value="<?php echo $project->price ?>"/>
 								<div class="invalid-feedback">
 									<?php echo form_error('price') ?>
 								</div>
@@ -59,7 +58,7 @@
 
 							<div class="form-group">
 								<label for="name">Photo</label>
-								<input class="form-control-file <?php echo form_error('image') ? 'is-invalid':'' ?>"
+								<input class="form-control-file <?php echo form_error('price') ? 'is-invalid':'' ?>"
 								 type="file" name="image" />
 								<input type="hidden" name="old_image" value="<?php echo $project->image ?>" />
 								<div class="invalid-feedback">
@@ -77,10 +76,20 @@
 							</div>
 
 							<div class="form-group">
-  								<label for="name">Date*</label>
-								<input class="form-control" type="date" name="datestarted" placeholder="Project Started" value="<?php echo $project->project_started ?>">
+  								<label for="name">Date Start*</label>
+								<input class="form-control <?php echo form_error('project_started') ? 'is-invalid':'' ?>" 
+								type="date" name="project_started" placeholder="Project Started" value="<?php echo $project->project_started ?>">
 								<div class="invalid-feedback">
 									<?php echo form_error('project_started') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+  								<label for="name">Date Ended*</label>
+								<input class="form-control <?php echo form_error('project_ended') ? 'is-invalid':'' ?>" 
+								type="date" name="project_ended" placeholder="Project Ended" value="<?php echo $project->project_ended ?>">
+								<div class="invalid-feedback">
+									<?php echo form_error('project_ended') ?>
 								</div>
 							</div>
 

@@ -21,7 +21,7 @@
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/projects/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+						<a href="<?php echo site_url('admin/clients/add') ?>"><i class="fas fa-plus"></i> Add New</a>
 					</div>
 					<div class="card-body">
 
@@ -29,45 +29,38 @@
 							<table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 									<tr>
-										<th>Name</th>
-										<th>Price</th>
 										<th>Photo</th>
-										<th>Description</th>
-										<th>Started</th>
-										<th>Ended</th>
-										<th>Status</th>
+										<th>Name</th>
+										<th>Address</th>
+										<th>industry</th>
+										<th>email</th>
 										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($projects as $project): ?>
+									<?php foreach ($clients as $client): ?>
 									<tr>
+										<td>
+											<img src="<?php echo base_url('upload/client/'.$client->image) ?>" width="64" />
+										</td>
 										<td width="150">
-											<?php echo $project->name ?>
+											<?php echo $client->name ?>
 										</td>
 										<td>
-											<?php echo $project->price ?>
+											<?php echo $client->address ?>
 										</td>
 										<td>
-											<img src="<?php echo base_url('upload/project/'.$project->image) ?>" width="64" />
-										</td>
-										<td class="small">
-											<?php echo substr($project->description, 0, 120) ?>...</td>
-										<td>
-											<?php echo $project->project_started ?>
+											<?php echo $client->industry ?>
 										</td>
 										<td>
-											<?php echo $project->project_ended ?>
-										</td>
-										<td>
-											<?php echo $project->status ?>
+											<?php echo $client->email ?>
 										</td>
 										<td width="250">
-											<a href="<?php echo site_url('admin/projects/edit/'.$project->project_id) ?>"
-											 class="btn btn-small"><i class="fas fa-tasks"></i> Task</a>
-											<a href="<?php echo site_url('admin/projects/edit/'.$project->project_id) ?>"
+											<!-- <a href="<?php echo site_url('admin/projects/edit/'.$project->project_id) ?>"
+											 class="btn btn-small"><i class="fas fa-tasks"></i> Task</a> -->
+											<a href="<?php echo site_url('admin/clients/edit/'.$client->client_id) ?>"
 											 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-											<a onclick="deleteConfirm('<?php echo site_url('admin/projects/delete/'.$project->project_id) ?>')"
+											<a onclick="deleteConfirm('<?php echo site_url('admin/clients/delete/'.$client->client_id) ?>')"
 											 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
 										</td>
 									</tr>
