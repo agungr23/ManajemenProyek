@@ -8,6 +8,8 @@ class Projects extends CI_Controller
     {
         parent::__construct();
         $this->load->model("project_model");
+        $this->load->model("client_model");
+        $this->load->model("project_status_model");
         $this->load->library('form_validation');
         $this->load->model("user_model");
 		if($this->user_model->isNotLogin()) redirect(site_url('admin/login'));
@@ -30,7 +32,11 @@ class Projects extends CI_Controller
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
 
-        $this->load->view("admin/project/new_form");
+        // $data["clients"] = $this->client_model->getAll();
+        $client = $this->client_model->getAll();
+        $project_status = $this->project_status_model->getAll();
+        $data = ['clients' => $client, 'projects_status' => $project_status];
+        $this->load->view("admin/project/new_form", $data);
     }
 
     public function edit($id = null)
@@ -46,7 +52,10 @@ class Projects extends CI_Controller
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
 
-        $data["project"] = $project->getById($id);
+        // $data["project"] = $project->getById($id);
+        $client = $this->client_model->getAll();
+        $project_status = $this->project_status_model->getAll();
+        $data = ['clients' => $client, 'projects_status' => $project_status, 'project' => $project->getById($id)];
         if (!$data["project"]) show_404();
         
         $this->load->view("admin/project/edit_form", $data);

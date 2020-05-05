@@ -31,26 +31,27 @@
 									<tr>
 										<th>Name</th>
 										<th>Price</th>
-										<th>Photo</th>
+										<!-- <th>Photo</th> -->
 										<th>Description</th>
 										<th>Started</th>
 										<th>Ended</th>
 										<th>Status</th>
+										<th>Client</th>
 										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
 									<?php foreach ($projects as $project): ?>
 									<tr>
-										<td width="150">
+										<td width="100">
 											<?php echo $project->name ?>
 										</td>
 										<td>
 											<?php echo $project->price ?>
 										</td>
-										<td>
+										<!-- <td>
 											<img src="<?php echo base_url('upload/project/'.$project->image) ?>" width="64" />
-										</td>
+										</td> -->
 										<td class="small">
 											<?php echo substr($project->description, 0, 120) ?>...</td>
 										<td>
@@ -62,7 +63,10 @@
 										<td>
 											<?php echo $project->status ?>
 										</td>
-										<td width="250">
+										<td>
+											<?php echo $project->cn ?>
+										</td>
+										<td width="260">
 											<a href="<?php echo site_url('admin/projects/edit/'.$project->project_id) ?>"
 											 class="btn btn-small"><i class="fas fa-tasks"></i> Task</a>
 											<a href="<?php echo site_url('admin/projects/edit/'.$project->project_id) ?>"

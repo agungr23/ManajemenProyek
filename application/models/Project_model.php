@@ -2,7 +2,7 @@
 
 class Project_model extends CI_Model
 {
-    private $_table1 = "project";
+    private $_table = "project";
 
     public $project_id;
     public $name;
@@ -11,6 +11,8 @@ class Project_model extends CI_Model
     public $description;
     public $project_started;
     public $project_ended;
+    public $client_id;
+    public $proj_status_id;
 
     public function rules()
     {
@@ -28,19 +30,36 @@ class Project_model extends CI_Model
             'rules' => 'required'],
 
             ['field' => 'project_started',
-            'label' => 'Project_started',
+            'label' => 'Date Start',
             'rules' => 'required'],
 
             ['field' => 'project_ended',
-            'label' => 'Project_ended',
+            'label' => 'Date Ended',
+            'rules' => 'required'],
+
+            ['field' => 'client_id',
+            'label' => 'Client',
             'rules' => 'required']
         ];
     }
 
     public function getAll()
     {
+        // $this->db->select('project.*, proj_status.status as status_project, client.name as client_name');
+        // $this->db->from('project','proj_status','client');
+        // $this->db->join('proj_status','project.proj_status_id=proj_status.proj_status_id');
+        // $this->db->join('client','project.client_id=client.client_id');
+        // $query = $this->db->get();
+        // if($id != null) {
+        //     $this->db->where('project_id',$id);
+        // }
+        // return $query;
         // return $this->db->get($this->_table1)->result();
-        return $this->db->query("SELECT project.project_id,project.name,project.price,project.image,project.description,project.project_started,project.project_ended,proj_status.status FROM project,proj_status WHERE project.proj_status_id=proj_status.proj_status_id")->result();
+        return $this->db->query("SELECT project.project_id,project.name,project.price,project.image,
+        project.description,project.project_started,project.project_ended,proj_status.status as status,client.name AS cn,
+        client.address as address,client.email as email,client.industry as industry,client.client_id as client_id
+        FROM project,proj_status,client WHERE project.proj_status_id=proj_status.proj_status_id 
+        AND project.client_id=client.client_id")->result();
     }
     
     public function getById($id)
@@ -58,6 +77,8 @@ class Project_model extends CI_Model
         $this->description = $post["description"];
         $this->project_started = $post["project_started"];
         $this->project_ended = $post["project_ended"];
+        $this->client_id = $post["client_id"];
+        $this->proj_status_id = $post["proj_status_id"];
         $this->db->insert($this->_table, $this);
     }
 
@@ -69,15 +90,17 @@ class Project_model extends CI_Model
 		$this->price = $post["price"];
 		
 		
-		if (!empty($_FILES["image"]["name"])) {
-            $this->image = $this->_uploadImage();
-        } else {
-            $this->image = $post["old_image"];
-		}
+		// if (!empty($_FILES["image"]["name"])) {
+        //     $this->image = $this->_uploadImage();
+        // } else {
+        //     $this->image = $post["old_image"];
+		// }
 
         $this->description = $post["description"];
         $this->project_started = $post["project_started"];
         $this->project_ended = $post["project_ended"];
+        $this->client_id = $post["client_id"];
+        $this->proj_status_id = $post["proj_status_id"];
         $this->db->update($this->_table, $this, array('project_id' => $post['id']));
     }
 
