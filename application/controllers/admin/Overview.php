@@ -6,6 +6,7 @@ class Overview extends CI_Controller {
 		parent::__construct();
 		$this->load->model("user_model");
 		if($this->user_model->isNotLogin()) redirect(site_url('admin/login'));
+
 	}
 
 	public function index()

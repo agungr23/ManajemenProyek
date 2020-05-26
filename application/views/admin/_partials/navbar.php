@@ -55,14 +55,23 @@
         <li class="nav-item dropdown no-arrow ">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
-                <i class="fas fa-user-circle fa-fw"></i> Admin
+                <img class="rounded-circle" src="<?php echo base_url('upload/user/'.$this->fungsi->user_login()->photo) ?>" width="30">
+             <?php echo $this->fungsi->user_login()->username ?>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">Settings</a>
+                <a class="dropdown-item" href="#">Profile</a>
                 <a class="dropdown-item" href="#">Activity Log</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
             </div>
+        </li>
+
+        <li class="nav-item dropdown no-arrow ">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <img class="rounded-circle" src="<?php echo base_url('upload/user/'.$this->fungsi->user_login()->photo) ?>" width="30">
+             <?php echo $this->fungsi->user_login()->role ?>
+            </a>
         </li>
     </ul>
     </form>

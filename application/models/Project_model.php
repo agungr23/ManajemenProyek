@@ -73,7 +73,7 @@ class Project_model extends CI_Model
         $this->project_id = uniqid();
         $this->name = $post["name"];
 		$this->price = $post["price"];
-		$this->image = $this->_uploadImage();
+		// $this->image = $this->_uploadImage();
         $this->description = $post["description"];
         $this->project_started = $post["project_started"];
         $this->project_ended = $post["project_ended"];

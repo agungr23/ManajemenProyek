@@ -61,18 +61,20 @@
 											<?php echo $project->project_ended ?>
 										</td>
 										<td>
-											<?php echo $project->status ?>
+											<span class="badge badge-success"><?php echo $project->status ?></span>
 										</td>
 										<td>
 											<?php echo $project->cn ?>
 										</td>
 										<td width="260">
+
+												<!-- <a href="<?php echo site_url('admin/project/task/'.$project->proj_name) ?>"
+												 class="btn btn-small btn-primary"><i class="fas fa-tasks"></i> Task</a> -->
+
 											<a href="<?php echo site_url('admin/projects/edit/'.$project->project_id) ?>"
-											 class="btn btn-small"><i class="fas fa-tasks"></i> Task</a>
-											<a href="<?php echo site_url('admin/projects/edit/'.$project->project_id) ?>"
-											 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
+											 class="btn btn-small btn-info"><i class="fas fa-edit"></i> Edit</a>
 											<a onclick="deleteConfirm('<?php echo site_url('admin/projects/delete/'.$project->project_id) ?>')"
-											 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+											 href="#!" class="btn btn-small btn-danger"><i class="fas fa-trash"></i> Hapus</a>
 										</td>
 									</tr>
 									<?php endforeach; ?>

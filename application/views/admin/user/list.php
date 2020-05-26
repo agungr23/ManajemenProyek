@@ -21,7 +21,7 @@
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
-						<a href="<?php echo site_url('admin/clients/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+						<a href="<?php echo site_url('admin/users/add') ?>"><i class="fas fa-plus"></i> Add New</a>
 					</div>
 					<div class="card-body">
 
@@ -30,37 +30,45 @@
 								<thead>
 									<tr>
 										<th>Photo</th>
-										<th>Name</th>
-										<th>Address</th>
-										<th>industry</th>
-										<th>email</th>
+										<th>Username</th>
+										<!-- <th>Password</th> -->
+										<th>Email</th>
+										<th>Full Name</th>
+										<th>Phone</th>
+										<th>Role</th>
 										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($clients as $client): ?>
+									<?php foreach ($users as $user): ?>
 									<tr>
 										<td>
-											<img src="<?php echo base_url('upload/client/'.$client->image) ?>" width="64" />
-										</td>
-										<td width="150">
-											<?php echo $client->name ?>
+											<img src="<?php echo base_url('upload/user/'.$user->photo) ?>" width="64" />
 										</td>
 										<td>
-											<?php echo $client->address ?>
+											<?php echo $user->username ?>
+										</td>
+										<!-- <td>
+											<?php echo $user->password ?>
+										</td> -->
+										<td width="250">
+											<?php echo $user->email ?>
+										</td>
+										<td width="250">
+											<?php echo $user->full_name ?>
 										</td>
 										<td>
-											<?php echo $client->industry ?>
+											<?php echo $user->phone ?>
 										</td>
 										<td>
-											<?php echo $client->email ?>
+											<?php echo $user->role ?>
 										</td>
 										<td width="250">
 											<!-- <a href="<?php echo site_url('admin/projects/edit/'.$project->project_id) ?>"
 											 class="btn btn-small"><i class="fas fa-tasks"></i> Task</a> -->
-											<a href="<?php echo site_url('admin/clients/edit/'.$client->client_id) ?>"
+											<a href="<?php echo site_url('admin/users/edit/'.$user->user_id) ?>"
 											 class="btn btn-small btn-info"><i class="fas fa-edit"></i> Edit</a>
-											<a onclick="deleteConfirm('<?php echo site_url('admin/clients/delete/'.$client->client_id) ?>')"
+											<a onclick="deleteConfirm('<?php echo site_url('admin/users/delete/'.$user->user_id) ?>')"
 											 href="#!" class="btn btn-small btn-danger"><i class="fas fa-trash"></i> Hapus</a>
 										</td>
 									</tr>

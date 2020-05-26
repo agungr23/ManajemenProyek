@@ -91,7 +91,7 @@
 							</div>
 							<div class="form-group input-group">
 								<input type="hidden" name="client_id" id="client_id">
-								<input type="text" name="client_id" id="client_id" class="form-control <?php echo form_error('client_id') ? 'is-invalid':'' ?>">
+								<input type="text" name="client_name" id="client_name" class="form-control <?php echo form_error('client_id') ? 'is-invalid':'' ?>">
 								<span class="input-group-btn">
 									<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-item">
 										<i class="fa fa-search"></i>
@@ -173,7 +173,7 @@
 					<td><?php echo $client->email ?></td>
 					<td>
 						<button class="btn btn-xs btn-info" id="select" data-id="<?php echo $client->client_id ?>"
-						>
+						data-name="<?php echo $client->name ?>">
 							<i class="fa fa-check"></i> Select
 						</button>
 					</td>
@@ -190,9 +190,9 @@
 $(document).ready(function() {
 	$(document).on('click','#select', function() {
 		var client_id = $(this).data('id');
-		// var name_client = $(this).data('name');
+		var client_name = $(this).data('name');
 		$('#client_id').val(client_id);
-		// $('#client_name').val(client_name);
+		$('#client_name').val(client_name);
 		$('#modal-item').modal('hide');
 	})
 })

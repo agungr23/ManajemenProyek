@@ -29,8 +29,8 @@
             <div class="col-12 col-md-5 mx-auto clkt">
                 <form action="<?= site_url('admin/login') ?>" method="POST">
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="text" class="form-control" name="email" placeholder="Pakai username juga bisa.." required />
+                        <label for="username">Email</label>
+                        <input type="text" class="form-control" name="username" placeholder="Pakai username juga bisa.." required />
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-success w-100" value="Login" />
+                        <input type="submit" class="btn btn-success w-100" name="login" />
                     </div>
 
                 </form>

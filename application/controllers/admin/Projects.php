@@ -8,6 +8,7 @@ class Projects extends CI_Controller
     {
         parent::__construct();
         $this->load->model("project_model");
+        $this->load->model("task_model");
         $this->load->model("client_model");
         $this->load->model("project_status_model");
         $this->load->library('form_validation');
@@ -17,8 +18,10 @@ class Projects extends CI_Controller
 
     public function index()
     {
+        // $data1["tasks"] = $this->task_model->getAll();
         $data["projects"] = $this->project_model->getAll();
         $this->load->view("admin/project/list", $data);
+        // $this->load->view("admin/project/list_task", $data1);
     }
 
     public function add()
