@@ -59,7 +59,7 @@ class Login extends CI_Controller
             } else {
                 echo "<script>
                     alert('login gagal, periksa username / password anda');
-                    window.location='".site_url('admin')."';
+                    window.location='".site_url('admin/login')."';
                 </script>";
             }
         }
