@@ -38,7 +38,8 @@
 							<input type="hidden" name="id" value="<?php echo $user->user_id ?>" />
 
 							<div class="form-group">
-								<label for="name">Photo</label>
+								<label for="name">Photo</label></br>
+								<img src="<?php echo base_url('upload/user/'.$user->photo) ?>" width="100">
 								<input class="form-control-file <?php echo form_error() ? 'is-invalid':'' ?>"
 								 type="file" name="image" />
 								<input type="hidden" name="old_image" value="<?php echo $user->photo ?>"/>
@@ -59,7 +60,7 @@
 							<div class="form-group">
 								<label for="name">Password*</label>
 								<input class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>"
-								 type="password" name="password" value="<?php echo $user->password ?>" />
+								 type="password" name="password"  />
 								<div class="invalid-feedback">
 									<?php echo form_error('password') ?>
 								</div>

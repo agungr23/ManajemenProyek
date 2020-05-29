@@ -30,7 +30,7 @@
 				<div class="card-body-icon">
 					<i class="fas fa-fw fa-user-tie"></i>
 				</div>
-				<div class="mr-5">26 Clients</div>
+				<div class="mr-5"><?php  ?> Clients</div>
 				</div>
 				<a class="card-footer text-white clearfix small z-1" href="<?php echo site_url('admin/clients') ?>">
 				<span class="float-left">View Details</span>

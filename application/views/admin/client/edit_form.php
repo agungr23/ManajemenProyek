@@ -38,7 +38,8 @@
 							<input type="hidden" name="id" value="<?php echo $client->client_id ?>" />
 
 							<div class="form-group">
-								<label for="name">Photo</label>
+								<label for="name">Photo</label></br>
+								<img src="<?php echo base_url('upload/client/'.$client->image) ?>" width="100">
 								<input class="form-control-file <?php echo form_error('image') ? 'is-invalid':'' ?>"
 								 type="file" name="image" />
 								<input type="hidden" name="old_image" value="<?php echo $client->image ?>" />

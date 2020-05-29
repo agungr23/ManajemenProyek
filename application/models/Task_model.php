@@ -110,6 +110,18 @@ class Task_model extends CI_Model
 	// 		$filename = explode(".", $client->image)[0];
 	// 		return array_map('unlink', glob(FCPATH."upload/client/$filename.*"));
 	// 	}
-	// }
+    // }
+    
+    public function getprofile() {
+        $this->db->select('project.*, proj_status.status as status_project, client.name as client_name');
+        $this->db->from('project','proj_status','client');
+        $this->db->join('proj_status','project.proj_status_id=proj_status.proj_status_id');
+        $this->db->join('client','project.client_id=client.client_id');
+        $query = $this->db->get();
+        if($id != null) {
+            $this->db->where('project_id',$id);
+        }
+        return $query;
+    }
 
 }

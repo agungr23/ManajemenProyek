@@ -34,6 +34,7 @@ class User_model extends CI_Model
     public function getAll()
     {
         return $this->db->get($this->_table)->result();
+        // $this->db->query('SELECT *, COUNT(user_id) AS total FROM users')->result();
     }
     
     public function getById($id)
@@ -48,7 +49,8 @@ class User_model extends CI_Model
         $this->username = $post["username"];
         $this->full_name = $post["full_name"];
         $this->email = $post["email"];
-        $this->password = password_hash($post["password"], PASSWORD_DEFAULT);
+        // $this->password = password_hash($post["password"], PASSWORD_DEFAULT);
+        $this->password = sha1($post["password"]);
         $this->role = $post["role"] ?? "admin";
         $this->phone = $post["phone"];
         $this->photo = $this->_uploadImage();
@@ -62,7 +64,8 @@ class User_model extends CI_Model
         $this->user_id = $post["id"];
         $this->full_name = $post["full_name"];
         $this->username = $post["username"];
-        $this->password = password_hash($post["password"], PASSWORD_DEFAULT);
+        // $this->password = password_hash($post["password"], PASSWORD_DEFAULT);
+        $this->password = sha1($post["password"]);
         $this->email = $post["email"];
         $this->role = $post["role"];
         $this->phone = $post["phone"];
@@ -162,5 +165,6 @@ class User_model extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
 
 }
