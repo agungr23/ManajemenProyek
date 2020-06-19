@@ -45,17 +45,24 @@ class Login extends CI_Controller
         if(isset($post['login'])) {
             $this->load->model('user_model');
             $query = $this->user_model->login($post);
+            $result = $this->db->get('users');
             if($query->num_rows() > 0) {
                 $row = $query->row();
                 $params = array(
                     'user_id' => $row->user_id,
-                    'role' => $row->role
+                    'role' => $row->role,
+                    'photo' => $row->photo,
+                    'last_login'=>date('Y-m-d H:i:s')
                 );
                 $this->session->set_userdata($params);
                 echo "<script>
                     alert('selamat, login berhasil');
                     window.location='".site_url('admin')."';
                 </script>";
+                // $this->db->where('user_id',$result->user_id);
+                // $this->db->update('users', array('last_login'=> date('Y-m-d H:i:s')));
+                $this->user_model->_updateLastLogin();
+                return true;
             } else {
                 echo "<script>
                     alert('login gagal, periksa username / password anda');

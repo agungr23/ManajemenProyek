@@ -21,7 +21,9 @@
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
+						<?php if($this->fungsi->user_login()->role == "admin") { ?>
 						<a href="<?php echo site_url('admin/projects/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+						<?php } ?>
 					</div>
 					<div class="card-body">
 
@@ -37,7 +39,9 @@
 										<th>Ended</th>
 										<th>Status</th>
 										<th>Client</th>
+										<?php if($this->fungsi->user_login()->role == "admin") { ?>
 										<th>Action</th>
+										<?php } ?>
 									</tr>
 								</thead>
 								<tbody>
@@ -61,12 +65,19 @@
 											<?php echo $project->project_ended ?>
 										</td>
 										<td>
-											<span class="badge badge-success"><?php echo $project->status ?></span>
+											<?php if($project->status == "In Progress"): ?>
+                                                <span class="badge badge-primary"><?php echo $project->status ?></span>
+                                            <?php elseif($project->status == "Stuck"): ?>
+                                                <span class="badge badge-danger"><?php echo $project->status ?></span>
+                                            <?php else: ?>
+                                                <span class="badge badge-success"><?php echo $project->status ?></span>
+                                            <?php endif; ?>
 										</td>
 										<td>
 											<?php echo $project->cn ?>
 										</td>
-										<td width="260">
+										<?php if($this->fungsi->user_login()->role == "admin") { ?>
+										<td width="170">
 
 												<!-- <a href="<?php echo site_url('admin/project/task/'.$project->proj_name) ?>"
 												 class="btn btn-small btn-primary"><i class="fas fa-tasks"></i> Task</a> -->
@@ -76,6 +87,7 @@
 											<a onclick="deleteConfirm('<?php echo site_url('admin/projects/delete/'.$project->project_id) ?>')"
 											 href="#!" class="btn btn-small btn-danger"><i class="fas fa-trash"></i> Hapus</a>
 										</td>
+										<?php } ?>
 									</tr>
 									<?php endforeach; ?>
 

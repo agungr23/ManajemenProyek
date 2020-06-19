@@ -10,6 +10,7 @@ class Client_model extends CI_Model
     public $address;
     public $industry;
     public $email;
+    public $status;
 
     public function rules()
     {
@@ -52,6 +53,7 @@ class Client_model extends CI_Model
 		$this->address = $post["address"];
         $this->industry = $post["industry"];
         $this->email = $post["email"];
+        $this->status = $post["status"];
         $this->db->insert($this->_table, $this);
     }
 
@@ -70,6 +72,7 @@ class Client_model extends CI_Model
 		$this->address = $post["address"];
         $this->industry = $post["industry"];
         $this->email = $post["email"];
+        $this->status = $post["status"];
         $this->db->update($this->_table, $this, array('client_id' => $post['id']));
     }
 
@@ -105,6 +108,16 @@ class Client_model extends CI_Model
 			$filename = explode(".", $client->image)[0];
 			return array_map('unlink', glob(FCPATH."upload/client/$filename.*"));
 		}
-	}
+    }
+    
+    public function get($id = null)
+    {
+        $this->db->from('client');
+        if($id != null) {
+            $this->db->where('client_id', $id);
+        }
+        $query = $this->db->get();
+        return $query;
+    }
 
 }

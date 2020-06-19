@@ -13,7 +13,9 @@
             <span>Clients</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <?php if($this->fungsi->user_login()->role == "admin") { ?>
             <a class="dropdown-item" href="<?php echo site_url('admin/clients/add') ?>">New Client</a>
+            <?php } ?>
             <a class="dropdown-item" href="<?php echo site_url('admin/clients') ?>">List Client</a>
         </div>
     </li>
@@ -24,10 +26,13 @@
             <span>Projects</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <?php if($this->fungsi->user_login()->role == "admin") { ?>
             <a class="dropdown-item" href="<?php echo site_url('admin/projects/add') ?>">New Project</a>
+            <?php } ?>
             <a class="dropdown-item" href="<?php echo site_url('admin/projects') ?>">List Project</a>
         </div>
     </li>
+    <?php if($this->fungsi->user_login()->role == "admin") { ?>
     <li class="nav-item dropdown <?php echo $this->uri->segment(2) == 'tasks' ? 'active': '' ?>">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
@@ -39,6 +44,15 @@
             <a class="dropdown-item" href="<?php echo site_url('admin/tasks') ?>">List Task</a>
         </div>
     </li>
+    <?php } ?>
+    <?php if(($this->fungsi->user_login()->role == "employee")||($this->fungsi->user_login()->role == "freelance")) { ?>
+    <li class="nav-item <?php echo $this->uri->segment(2) == 'tasksfu' ? 'active': '' ?>">
+        <a class="nav-link" href="<?php echo site_url('admin/tasksfu') ?>">
+            <i class="fas fa-fw fa-tasks"></i>
+            <span>Tasks</span>
+        </a>
+    </li>
+    <?php } ?>
     <?php if($this->fungsi->user_login()->role == "admin") { ?>
     <li class="nav-item dropdown <?php echo $this->uri->segment(2) == 'users' ? 'active': '' ?>">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -52,10 +66,10 @@
         </div>
     </li>
     <?php } ?>
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link" href="#">
             <i class="fas fa-fw fa-cog"></i>
             <span>Settings</span></a>
-    </li>
+    </li> -->
     
 </ul>

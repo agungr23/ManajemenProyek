@@ -20,6 +20,8 @@ class Tasks extends CI_Controller
     {
         $data["tasks"] = $this->task_model->getAll();
         $this->load->view("admin/task/list", $data);
+        // $data1["tasks"] = $this->task_model->gettask();
+        // $this->load->view("admin/task/listfu", $data1);
     }
 
     public function add()
@@ -74,4 +76,5 @@ class Tasks extends CI_Controller
             redirect(site_url('admin/tasks'));
         }
     }
+    
 }

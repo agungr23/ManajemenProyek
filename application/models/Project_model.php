@@ -136,6 +136,18 @@ class Project_model extends CI_Model
 			$filename = explode(".", $project->image)[0];
 			return array_map('unlink', glob(FCPATH."upload/project/$filename.*"));
 		}
-	}
+    }
+
+    public function get($id = null)
+    {
+        $this->db->from('project');
+        if($id != null) {
+            $this->db->where('project_id', $id);
+        }
+        $query = $this->db->get();
+        return $query;
+    }
+
+
 
 }

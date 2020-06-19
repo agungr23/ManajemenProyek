@@ -34,7 +34,7 @@
                 <div class="tab-content">
                   <div class="tab-pane active" id="tab_1">
 				  	<center>
-              			<img class="profile-user-img img-responsive img-circle" src="<?php echo base_url('upload/user/'.$this->fungsi->user_login()->photo) ?>" width="200px">
+              			<img class="profile-user-img img-responsive rounded-circle" src="<?= base_url('upload/user/'.$this->fungsi->user_login()->photo) ?>" width="200px" height="200px">
 			  		</center>
               		<h3 class="profile-username text-center"><?php echo $this->fungsi->user_login()->full_name ?></h3>
 
@@ -44,13 +44,13 @@
 						<div class="col-sm-5 text-right">
 							<label>Username : </label>
 						</div>
-						<div class="col-sm-5">
+						<div class="col-sm-5 mb-3">
 							<input class="form-control" type="text" name="username" value="<?php echo $this->fungsi->user_login()->username ?>" disabled/>
 						</div>
 						<div class="col-sm-5 text-right">
 							<label>Email : </label>
 						</div>
-						<div class="col-sm-5">
+						<div class="col-sm-5 mb-3">
 							<input class="form-control" type="text" name="username" value="<?php echo $this->fungsi->user_login()->email ?>" disabled/>
 						</div>
 						<div class="col-sm-5 text-right">
@@ -63,50 +63,54 @@
                   </div>
                   <!-- /.tab-pane -->
                   <div class="tab-pane" id="tab_2">
-				  	<form action="<?php base_url('admin/user/add') ?>" method="post" enctype="multipart/form-data" >
+				  	<form action="<?php echo base_url(); ?>index.php/admin/profile/edit" method="post" enctype="multipart/form-data">
+					  	<input type="hidden" name="id" value="<?php echo $this->fungsi->user_login()->user_id ?>" />
+						<input class="form-control" type="hidden" name="password" value="<?php echo $this->fungsi->user_login()->password ?>"/>
+						<input class="form-control" type="hidden" name="role" value="<?php echo $this->fungsi->user_login()->role ?>" />
 				  	<div class="row ml-5 mr-5 m-4" >
 						<div class="col-sm-5 text-right">
 							<label>Username : </label>
 						</div>
-						<div class="col-sm-5">
-							<input class="form-control" type="text" name="username" value="<?php echo $this->fungsi->user_login()->username ?>" disabled/>
+						<div class="col-sm-5 mb-3">
+							<input class="form-control" type="text" name="username" value="<?php echo $this->fungsi->user_login()->username ?>"/>
 						</div>
 						<div class="col-sm-5 text-right">
 							<label>Full Name : </label>
 						</div>
-						<div class="col-sm-5">
-							<input class="form-control" type="text" name="username" value="<?php echo $this->fungsi->user_login()->full_name ?>" disabled/>
+						<div class="col-sm-5 mb-3">
+							<input class="form-control" type="text" name="full_name" value="<?php echo $this->fungsi->user_login()->full_name ?>"/>
 						</div>
 						<div class="col-sm-5 text-right">
 							<label>Email : </label>
 						</div>
-						<div class="col-sm-5">
-							<input class="form-control" type="text" name="username" value="<?php echo $this->fungsi->user_login()->email ?>" disabled/>
+						<div class="col-sm-5 mb-3">
+							<input class="form-control" type="text" name="email" value="<?php echo $this->fungsi->user_login()->email ?>"/>
 						</div>
 						<div class="col-sm-5 text-right">
 							<label>Phone : </label>
 						</div>
-						<div class="col-sm-5">
-							<input class="form-control" type="text" name="username" value="<?php echo $this->fungsi->user_login()->phone ?>" disabled/>
+						<div class="col-sm-5 mb-3">
+							<input class="form-control" type="text" name="phone" value="<?php echo $this->fungsi->user_login()->phone ?>" />
 						</div>
-						<div class="col-sm-5 text-right">
+						<!-- <div class="col-sm-5 text-right">
 							<label>Role : </label>
 						</div>
 						<div class="col-sm-5">
-							<input class="form-control" type="text" name="username" value="<?php echo $this->fungsi->user_login()->role ?>" disabled/>
-						</div>
+							
+						</div> -->
 						<div class="col-sm-5 text-right">
-							<label>Photo : </label>
+							<label >Photo : </label>
 						</div>
 						<div class="col-sm-5">
-							<input class="form-control-file <?php echo form_error() ? 'is-invalid':'' ?>"
-								 type="file" name="image" />
-							<input type="hidden" name="old_image" value="<?php echo $user->photo ?>"/>
-							<div class="invalid-feedback">
-								<?php echo form_error('image') ?>
+							<div class="form-group">
+							<input class="form-control-file" type="file" name="image" />
+							<input type="hidden" name="old_image" value="<?php echo $this->fungsi->user_login()->photo ?>"/>
 							</div>
 						</div>
 					</div>
+					<center>
+					<input class="btn btn-success" type="submit" name="btn" value="Save" />
+					</center>
 					</form>
                   </div>
                   <!-- /.tab-pane -->

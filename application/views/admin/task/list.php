@@ -47,14 +47,20 @@
 											<?php echo $task->instruction ?>
 										</td>
 										<td>
-											<span class="badge badge-success"><?php echo $task->status ?></span>
+											<?php if($task->status == "In Progress"): ?>
+                                                <span class="badge badge-primary"><?php echo $task->status ?></span>
+                                            <?php elseif($task->status == "Stuck"): ?>
+                                                <span class="badge badge-danger"><?php echo $task->status ?></span>
+                                            <?php else: ?>
+                                                <span class="badge badge-success"><?php echo $task->status ?></span>
+                                            <?php endif; ?>
 										<td>
 											<?php echo $task->proj_name ?>
 										</td>
 										<td>
 											<?php echo $task->person ?>
 										</td>
-										<td width="260">
+										<td width="170">
 											<a href="<?php echo site_url('admin/tasks/edit/'.$task->task_id) ?>"
 											 class="btn btn-small btn-info"><i class="fas fa-edit"></i> Edit</a>
 											<a onclick="deleteConfirm('<?php echo site_url('admin/tasks/delete/'.$task->task_id) ?>')"

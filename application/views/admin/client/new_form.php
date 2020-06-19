@@ -77,6 +77,15 @@
 								</div>
 							</div>
 
+							<div class="form-group">
+  								<label for="name">Status*</label>
+								  <select name="status" class="form-control">
+									<option value="Stuck">Stuck</option>
+									<option value="In Progress">In Progress</option>
+									<option value="Done">done</option>
+								</select>
+							</div>
+
 							<input class="btn btn-success" type="submit" name="btn" value="Save" />
 						</form>
 

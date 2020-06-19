@@ -21,7 +21,9 @@
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
+						<?php if($this->fungsi->user_login()->role == "admin") { ?>
 						<a href="<?php echo site_url('admin/clients/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+						<?php } ?>
 					</div>
 					<div class="card-body">
 
@@ -32,9 +34,12 @@
 										<th>Photo</th>
 										<th>Name</th>
 										<th>Address</th>
-										<th>industry</th>
-										<th>email</th>
+										<th>Industry</th>
+										<th>Email</th>
+										<th>Status</th>
+										<?php if($this->fungsi->user_login()->role == "admin") { ?>
 										<th>Action</th>
+										<?php } ?>
 									</tr>
 								</thead>
 								<tbody>
@@ -55,7 +60,17 @@
 										<td>
 											<?php echo $client->email ?>
 										</td>
-										<td width="250">
+										<td>
+											<?php if($client->status == "In Progress"): ?>
+                                                <span class="badge badge-primary"><?php echo $client->status ?></span>
+                                            <?php elseif($client->status == "Stuck"): ?>
+                                                <span class="badge badge-danger"><?php echo $client->status ?></span>
+                                            <?php else: ?>
+                                                <span class="badge badge-success"><?php echo $client->status ?></span>
+                                            <?php endif; ?>
+										</td>
+										<?php if($this->fungsi->user_login()->role == "admin") { ?>
+										<td width="170">
 											<!-- <a href="<?php echo site_url('admin/projects/edit/'.$project->project_id) ?>"
 											 class="btn btn-small"><i class="fas fa-tasks"></i> Task</a> -->
 											<a href="<?php echo site_url('admin/clients/edit/'.$client->client_id) ?>"
@@ -63,6 +78,7 @@
 											<a onclick="deleteConfirm('<?php echo site_url('admin/clients/delete/'.$client->client_id) ?>')"
 											 href="#!" class="btn btn-small btn-danger"><i class="fas fa-trash"></i> Hapus</a>
 										</td>
+										<?php } ?>
 									</tr>
 									<?php endforeach; ?>
 

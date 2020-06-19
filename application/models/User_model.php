@@ -51,7 +51,7 @@ class User_model extends CI_Model
         $this->email = $post["email"];
         // $this->password = password_hash($post["password"], PASSWORD_DEFAULT);
         $this->password = sha1($post["password"]);
-        $this->role = $post["role"] ?? "admin";
+        $this->role = $post["role"];
         $this->phone = $post["phone"];
         $this->photo = $this->_uploadImage();
         // $this->is_active = $post["is_active"] ?? "1";
@@ -66,6 +66,30 @@ class User_model extends CI_Model
         $this->username = $post["username"];
         // $this->password = password_hash($post["password"], PASSWORD_DEFAULT);
         $this->password = sha1($post["password"]);
+        $this->email = $post["email"];
+        $this->role = $post["role"];
+        $this->phone = $post["phone"];
+        // $this->photo = $this->_uploadImage();
+
+        if (!empty($_FILES["image"]["name"])) {
+            $this->photo = $this->_uploadImage();
+        } else {
+            $this->photo = $post["old_image"];
+        }
+        
+        // $this->is_active = $post["is_active"] ?? "1";
+
+        $this->db->update($this->_table, $this, array('user_id' => $post['id']));
+    }
+
+    public function updateprofile()
+    {
+        $post = $this->input->post();
+        $this->user_id = $post["id"];
+        $this->full_name = $post["full_name"];
+        $this->username = $post["username"];
+        // $this->password = password_hash($post["password"], PASSWORD_DEFAULT);
+        $this->password = ($post["password"]);
         $this->email = $post["email"];
         $this->role = $post["role"];
         $this->phone = $post["phone"];
@@ -108,8 +132,8 @@ class User_model extends CI_Model
         return $this->session->userdata('user_id') === null;
     }
 
-    public function _updateLastLogin($user_id){
-        $sql = "UPDATE {$this->_table} SET last_login=now() WHERE user_id={$user_id}";
+    public function _updateLastLogin(){
+        $sql = "UPDATE {$this->_table} SET last_login=now() WHERE user_id={$this->fungsi->user_login()->user_id}";
         $this->db->query($sql);
     }
 
@@ -166,5 +190,20 @@ class User_model extends CI_Model
         return $query;
     }
 
+    public function register()
+    {
+        $post = $this->input->post();
+        // $this->user_id = $post["user_id"];
+        $this->username = $post["username"];
+        $this->full_name = $post["full_name"];
+        $this->email = $post["email"];
+        // $this->password = password_hash($post["password"], PASSWORD_DEFAULT);
+        $this->password = sha1($post["password"]);
+        $this->role = $post["role"];
+        // $this->phone = $post["phone"];
+        $this->photo = $this->_uploadImage();
+        // $this->is_active = $post["is_active"] ?? "1";
+        $this->db->insert($this->_table, $this);
+    }
 
 }

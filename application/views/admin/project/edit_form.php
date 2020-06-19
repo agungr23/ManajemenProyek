@@ -97,8 +97,10 @@
 								<label for="name">Pilih Client*</label>
 							</div>
 							<div class="form-group input-group">
-								<input type="hidden" name="client_id" id="client_id">
-								<input type="text" name="client_name" id="client_name" class="form-control <?php echo form_error('client_id') ? 'is-invalid':'' ?>">
+								<input type="hidden" name="client_id" id="client_id" value="<?php foreach($clients as $client){if($project->client_id==$client->client_id) echo $project->client_id;}?>">
+								<!-- <input type="text" name="client_name" id="client_name" class="form-control <?php echo form_error('client_id') ? 'is-invalid':'' ?>"> -->
+									<input type="text" name="client_name" id="client_name" class="form-control <?php echo form_error('client_id') ? 'is-invalid':'' ?>"
+									value="<?php foreach($clients as $client){if($project->client_id==$client->client_id) echo $client->name;}?>">
 								<span class="input-group-btn">
 									<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-item">
 										<i class="fa fa-search"></i>
@@ -112,10 +114,9 @@
 							<div class="form-group">
 								<label>Status</label>
 								<select name="proj_status_id" class="form-control">
-									<option value="">- pilih -</option>
-									<?php foreach ($projects_status as $project_status) {
-										echo '<option value="'.$project_status->proj_status_id.'">'.$project_status->status.'</option>';
-									}?>
+									<?php foreach ($projects_status as $project_status) {?>
+									<option value="<?php echo $project_status->proj_status_id ?>" <?php if($project->proj_status_id==$project_status->proj_status_id) echo 'selected="selected"'; ?> ><?php echo $project_status->status ?></option>
+									<?php } ?>
 								</select>
 							</div>
 

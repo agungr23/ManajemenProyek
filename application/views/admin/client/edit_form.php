@@ -84,6 +84,23 @@
 								</div>
 							</div>
 
+							<div class="form-group">
+  								<label for="name">Status*</label>
+								  <select name="status" class="form-control">
+								  	<option value="<?php echo $client->status ?>"><?php echo $client->status ?></option>
+									<?php if($client->status == "Stuck"): ?>
+										<option value="In Progress">In Progress</option>
+										<option value="Done">Done</option>
+                                    <?php elseif($client->status == "In Progress"): ?>
+                                        <option value="Stuck">Stuck</option>
+										<option value="Done">Done</option>
+                                    <?php else: ?>
+                                        <option value="In Progress">In Progress</option>
+										<option value="Stuck">Stuck</option>
+                                    <?php endif; ?>
+								</select>
+							</div>
+
 							<input class="btn btn-success" type="submit" name="btn" value="Save" />
 						</form>
 

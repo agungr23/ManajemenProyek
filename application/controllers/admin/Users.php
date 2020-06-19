@@ -45,6 +45,7 @@ class Users extends CI_Controller
         if ($validation->run()) {
             $user->update();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
+            
         }
 
         $data["user"] = $user->getById($id);
@@ -64,3 +65,5 @@ class Users extends CI_Controller
 
     
 }
+
+

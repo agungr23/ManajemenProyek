@@ -30,7 +30,7 @@
 				<div class="card-body-icon">
 					<i class="fas fa-fw fa-user-tie"></i>
 				</div>
-				<div class="mr-5"><?php  ?> Clients</div>
+				<div class="mr-5"><?php echo $this->fungsi->dashboardclient();  ?> Clients</div>
 				</div>
 				<a class="card-footer text-white clearfix small z-1" href="<?php echo site_url('admin/clients') ?>">
 				<span class="float-left">View Details</span>
@@ -46,7 +46,7 @@
 				<div class="card-body-icon">
 					<i class="fas fa-fw fa-list"></i>
 				</div>
-				<div class="mr-5">11 Tasks</div>
+				<div class="mr-5"><?php echo $this->fungsi->dashboardtask();  ?> Tasks</div>
 				</div>
 				<a class="card-footer text-white clearfix small z-1" href="<?php echo site_url('admin/tasks') ?>">
 				<span class="float-left">View Details</span>
@@ -62,7 +62,7 @@
 				<div class="card-body-icon">
 					<i class="fas fa-fw fa-boxes"></i>
 				</div>
-				<div class="mr-5">123 Projects</div>
+				<div class="mr-5"><?php echo $this->fungsi->dashboardproject();  ?> Projects</div>
 				</div>
 				<a class="card-footer text-white clearfix small z-1" href="<?php echo site_url('admin/projects') ?>">
 				<span class="float-left">View Details</span>
@@ -78,7 +78,7 @@
 				<div class="card-body-icon">
 					<i class="fas fa-fw fa-users"></i>
 				</div>
-				<div class="mr-5">13 Users</div>
+				<div class="mr-5"><?php echo $this->fungsi->dashboarduser();  ?> Users</div>
 				</div>
 				<a class="card-footer text-white clearfix small z-1" href="<?php echo site_url('admin/users') ?>">
 				<span class="float-left">View Details</span>

@@ -33,7 +33,7 @@
 					</div>
 					<div class="card-body">
 
-						<form action="<?php base_url('admin/task/add') ?>" method="post" enctype="multipart/form-data" >
+						<form action="<?php base_url('admin/task/edit') ?>" method="post" enctype="multipart/form-data" >
 
 							<input type="hidden" name="id" value="<?php echo $task->task_id ?>" />
 
@@ -55,13 +55,18 @@
 								</div>
 							</div>
 
+							<!-- <div class="form-group">
+							<label for="name">File</label></br> -->
+								<input class="form-control-file" type="hidden" name="image" />
+								<input type="hidden" name="old_image" value="<?php echo $task->file ?>" />
+							<!-- </div> -->
+
 							<div class="form-group">
 								<label>Status</label>
 								<select name="task_status_id" class="form-control">
-									<option value="">- pilih -</option>
-									<?php foreach ($tasks_status as $task_status) {
-										echo '<option value="'.$task_status->task_status_id.'">'.$task_status->status.'</option>';
-									}?>
+									<?php foreach ($tasks_status as $task_status) {?>
+									<option value="<?php echo $task_status->task_status_id ?>" <?php if($task->task_status_id==$task_status->task_status_id) echo 'selected="selected"'; ?> ><?php echo $task_status->status ?></option>
+									<?php } ?>
 								</select>
 							</div>
 
@@ -69,8 +74,9 @@
 								<label for="name">Pilih Project*</label>
 							</div>
 							<div class="form-group input-group">
-								<input type="hidden" name="project_id" id="project_id">
-								<input type="text" name="project_name" id="project_name" class="form-control <?php echo form_error('project_id') ? 'is-invalid':'' ?>">
+								<input type="hidden" name="project_id" id="project_id" value="<?php foreach($projects as $project){if($task->project_id==$project->project_id) echo $project->project_id;}?>">
+								<input type="text" name="project_name" id="project_name" class="form-control <?php echo form_error('project_id') ? 'is-invalid':'' ?>"
+								value="<?php foreach($projects as $project){if($task->project_id==$project->project_id) echo $project->name;}?>">
 								<span class="input-group-btn">
 									<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-project">
 										<i class="fa fa-search"></i>
@@ -85,8 +91,9 @@
 								<label for="name">Pilih Person*</label>
 							</div>
 							<div class="form-group input-group">
-								<input type="hidden" name="user_id" id="user_id">
-								<input type="text" name="user_name" id="user_name" class="form-control <?php echo form_error('user_id') ? 'is-invalid':'' ?>">
+								<input type="hidden" name="user_id" id="user_id" value="<?php foreach($users as $user){if($task->user_id==$user->user_id) echo $user->user_id;}?>">
+								<input type="text" name="user_name" id="user_name" class="form-control <?php echo form_error('user_id') ? 'is-invalid':'' ?>"
+								value="<?php foreach($users as $user){if($task->user_id==$user->user_id) echo $user->full_name;}?>">
 								<span class="input-group-btn">
 									<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-user">
 										<i class="fa fa-search"></i>

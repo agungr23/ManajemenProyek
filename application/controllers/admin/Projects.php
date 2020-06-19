@@ -72,4 +72,6 @@ class Projects extends CI_Controller
             redirect(site_url('admin/projects'));
         }
     }
+
+
 }

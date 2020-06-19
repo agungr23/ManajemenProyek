@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand navbar-dark static-top bg-dark">
 
     <!-- <a href="<?php echo site_url('admin') ?> -->
-        <img src="http://localhost/manjmproyek/assets/img/kodegiri_putih.png" width="70" height="45" href="<?php echo site_url('admin') ?>">
+        <img src="<?php echo base_url('assets/img/kodegiri_putih.png')?>" width="70" height="45" href="<?php echo site_url('admin') ?>">
     <!-- </a> -->
     <a class="navbar-brand mr-1 ml-2" href="<?php echo site_url('admin') ?>">KODEGIRI</a>
 
@@ -55,12 +55,12 @@
         <li class="nav-item dropdown no-arrow ">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
-                <img class="rounded-circle" src="<?php echo base_url('upload/user/'.$this->fungsi->user_login()->photo) ?>" width="30">
-             <?php echo $this->fungsi->user_login()->username ?>
+                <img class="rounded-circle" src="<?php echo base_url('upload/user/'.$this->fungsi->user_login()->photo) ?>" width="30" height="30">
+             <?php echo $this->fungsi->user_login()->username ?> 
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="<?php echo site_url('admin/profile') ?>">Profile</a>
-                <a class="dropdown-item" href="#">Activity Log</a>
+                <!-- <a class="dropdown-item" href="#">Activity Log</a> -->
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
             </div>

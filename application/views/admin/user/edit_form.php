@@ -19,7 +19,7 @@
 				<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
 
 				<?php if ($this->session->flashdata('success')): ?>
-				<div class="alert alert-success" role="alert">
+				<div id="notifikasi" class="alert alert-success" role="alert">
 					<?php echo $this->session->flashdata('success'); ?>
 				</div>
 				<?php endif; ?>
@@ -33,7 +33,7 @@
 					</div>
 					<div class="card-body">
 
-						<form action="<?php base_url('admin/user/add') ?>" method="post" enctype="multipart/form-data" >
+						<form action="<?php base_url('admin/user/edit') ?>" method="post" enctype="multipart/form-data" >
 
 							<input type="hidden" name="id" value="<?php echo $user->user_id ?>" />
 
@@ -97,9 +97,16 @@
   								<label for="name">Role*</label>
 								  <select name="role" class="form-control">
 								  	<option value="<?php echo $user->role ?>"><?php echo $user->role ?></option>
-									<option value="admin">admin</option>
-									<option value="employee">employee</option>
-									<option value="freelance">freelance</option>
+									<?php if($user->role == "admin"): ?>
+										<option value="employee">employee</option>
+										<option value="freelance">freelance</option>
+                                    <?php elseif($user->role == "freelance"): ?>
+                                        <option value="admin">admin</option>
+										<option value="employee">employee</option>
+                                    <?php else: ?>
+                                        <option value="admin">admin</option>
+										<option value="freelance">freelance</option>
+                                    <?php endif; ?>
 								</select>
 							</div>
 
