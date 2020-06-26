@@ -38,7 +38,7 @@ class Task_model extends CI_Model
     {
         // return $this->db->get($this->_table)->result();
         return $this->db->query("SELECT task.task_id as task_id,task.task_name,task.instruction,task_status.status as status,
-        project.name as proj_name,users.full_name as person
+        project.name as proj_name,users.full_name as person,task.user_id as user_id,task.file as file
         FROM task,task_status,users,project WHERE task.project_id=project.project_id 
         AND task.task_status_id=task_status.task_status_id AND task.user_id=users.user_id")->result();
     }

@@ -43,7 +43,7 @@
 									<?php foreach ($users as $user): ?>
 									<tr>
 										<td>
-											<img src="<?php echo base_url('upload/user/'.$user->photo) ?>" width="64" />
+											<img src="<?php echo base_url('upload/user/'.$user->photo) ?>" width="40" height="40"/>
 										</td>
 										<td>
 											<?php echo $user->username ?>
@@ -63,7 +63,7 @@
 										<td>
 											<?php echo $user->role ?>
 										</td>
-										<td width="250">
+										<td width="260">
 											<!-- <a href="<?php echo site_url('admin/projects/edit/'.$project->project_id) ?>"
 											 class="btn btn-small"><i class="fas fa-tasks"></i> Task</a> -->
 											<a href="<?php echo site_url('admin/users/edit/'.$user->user_id) ?>"

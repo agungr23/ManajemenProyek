@@ -3,6 +3,14 @@
 
 <head>
 	<?php $this->load->view("admin/_partials/head.php") ?>
+	<style>
+		.isDisabled {
+			color: currentColor;
+			cursor: not-allowed;
+			opacity: 0.5;
+			text-decoration: none;
+		}	
+	</style>
 </head>
 
 <body id="page-top">
@@ -12,12 +20,13 @@
 
 		<?php $this->load->view("admin/_partials/sidebar.php") ?>
 
-		<div id="content-wrapper">
+		
 
 			<div class="container-fluid">
 
 				<?php //$this->load->view("admin/_partials/breadcrumb.php") ?>
-                <?php if ($this->session->flashdata('success')): ?>
+                <div id="content-wrapper">
+				<?php if ($this->session->flashdata('success')): ?>
 				<div class="alert alert-success" role="alert">
 					<?php echo $this->session->flashdata('success'); ?>
 				</div>
@@ -26,7 +35,9 @@
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
+						<?php if($this->fungsi->user_login()->role == "admin") { ?>
 						<a href="<?php echo site_url('admin/tasks/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+						<?php } ?>
 					</div>
 					<div class="card-body">
 
@@ -66,7 +77,7 @@
 										<td>
 											<?php echo $task->person ?>
 										</td>
-										<td width="170">
+										<td width="230">
 											<!-- <a href="<?php //echo site_url('admin/tasksfu/'.$task->task_id) ?>"
 											 class="btn btn-small btn-info" data-toggle="modal" data-target="#modal-ut" id="select" 
                                              data-id="<?php echo $task->task_id; ?>"
@@ -81,6 +92,13 @@
                                              <a href="<?php //echo site_url('admin/tasksfu/'.$task->task_id) ?>"
 											 class="btn btn-small btn-info" data-toggle="modal" data-target="#modal-ut<?php echo $task->task_id; ?>">
                                              <i class="fas fa-upload"></i> Upload File</a>
+											 <?php if($task->status == "Done"): ?>
+												<a href="<?php echo base_url().'admin/invoice?id='.$task->task_id ?>" 
+												class="btn btn-small btn-success"><i class="fas fa-file-invoice-dollar"></i> Invoice</a>
+											 <?php else: ?>
+                                                <button href="<?php echo base_url().'admin/invoice?id='.$task->task_id ?>" 
+												class="btn btn-small btn-success isDisabled"><i class="fas fa-file-invoice-dollar isDisabled"></i> Invoice</button>
+                                            <?php endif; ?>
 										</td>
 									</tr>
 									<?php endforeach; ?>

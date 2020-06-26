@@ -36,6 +36,7 @@
 						<form action="<?php base_url('admin/user/edit') ?>" method="post" enctype="multipart/form-data" >
 
 							<input type="hidden" name="id" value="<?php echo $user->user_id ?>" />
+							<input type="hidden" name="password" value="<?php echo $user->password ?>" />
 
 							<div class="form-group">
 								<label for="name">Photo</label></br>
@@ -57,14 +58,14 @@
 								</div>
 							</div>
 
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label for="name">Password*</label>
-								<input class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>"
+								<input class="form-control <?php //echo form_error('password') ? 'is-invalid':'' ?>"
 								 type="password" name="password"  />
 								<div class="invalid-feedback">
-									<?php echo form_error('password') ?>
+									<?php //echo form_error('password') ?>
 								</div>
-							</div>
+							</div> -->
 
 							<div class="form-group">
 								<label for="name">Email*</label>

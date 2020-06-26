@@ -65,6 +65,8 @@
 											 class="btn btn-small btn-info"><i class="fas fa-edit"></i> Edit</a>
 											<a onclick="deleteConfirm('<?php echo site_url('admin/tasks/delete/'.$task->task_id) ?>')"
 											 href="#!" class="btn btn-small btn-danger"><i class="fas fa-trash"></i> Hapus</a>
+											 <!-- <a href="<?php echo base_url().'admin/invoice?id='.$task->user_id ?>" 
+											 class="btn btn-small btn-success"><i class="fas fa-file-invoice-dollar"></i> Invoice</a> -->
 										</td>
 									</tr>
 									<?php endforeach; ?>

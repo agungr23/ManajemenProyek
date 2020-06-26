@@ -6,11 +6,8 @@
 </head>
 <body id="page-top">
 
-<?php $this->load->view("admin/_partials/navbar.php") ?>
-
 <div id="wrapper">
 
-	<?php $this->load->view("admin/_partials/sidebar.php") ?>
 
 	<div id="content-wrapper">
     <div class="container-fluid">
@@ -35,27 +32,25 @@
                 <div class="col-sm-4 invoice-col">
                   From
                   <address>
-                  <?php foreach ($invos as $invo): ?>
-                    <strong><?php echo $invo->full_name ?></strong><br>
-                    Phone: <?php echo $invo->phone ?><br>
-                    Email: <?php echo $invo->email ?>
-                    <?php endforeach; ?>
+                    <strong><?php echo $this->fungsi->user_login()->full_name ?></strong><br>
+                    Phone: <?php echo $this->fungsi->user_login()->phone ?><br>
+                    Email: <?php echo $this->fungsi->user_login()->email ?>
                   </address>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
                   To
                   <address>
-                    
-                    <strong><?php echo $this->fungsi->user_login()->full_name ?></strong><br>
-                    Phone: <?php echo $this->fungsi->user_login()->phone ?><br>
-                    Email: <?php echo $this->fungsi->user_login()->email ?>
-                    
+                    <?php foreach ($invos as $invo): ?>
+                    <strong><?php echo $invo->namauser ?></strong><br>
+                    Phone: <?php echo $invo->nohp ?><br>
+                    Email: <?php echo $invo->email ?>
+                    <?php endforeach; ?>
                   </address>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
-                  <b>Invoice #<?= substr(md5(time()), 0, 9) ?>-<?php echo $this->fungsi->user_login()->user_id ?></b><br>
+                  <b>Invoice #<?= substr(md5(time()), 0, 9) ?>-<?php echo $invo->userid ?></b><br>
                   <br>
                   <!-- <b>Order ID:</b> 4F3S8J<br>
                   <b>Payment Due:</b> 2/22/2014<br>
@@ -150,15 +145,13 @@
                   <button type="button" class="btn btn-success float-right" onclick="printDiv('printableArea')"><i class="far fa-credit-card"></i>
                     Print
                   </button>
-                  <!-- <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;" > 
+                  <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;" > 
                     <i class="fas fa-download"></i> Generate PDF
-                  </button> -->
+                  </button>
                 </div>
               </div>
       </div><!-- /.container-fluid -->
 
-		<!-- Sticky Footer -->
-		<?php $this->load->view("admin/_partials/footer.php") ?>
 
 	</div>
 	<!-- /.content-wrapper -->

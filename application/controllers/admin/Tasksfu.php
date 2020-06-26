@@ -52,12 +52,12 @@ class Tasksfu extends CI_Controller
         // $validation->set_rules($task->rules());
 
         // if ($validation->run()) {
-        //     $task->update();
+            $task->update();
+            $this->session->set_flashdata('success', 'Berhasil disimpan');
+        // }
+        // if ($task->update()) {
         //     $this->session->set_flashdata('success', 'Berhasil disimpan');
         // }
-        if ($task->update()) {
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
-        }
 
         // $data["tasksfu"] = $task->getById($id);
         // if (!$data["tasksfu"]) show_404();

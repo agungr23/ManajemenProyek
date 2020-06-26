@@ -65,7 +65,7 @@ class User_model extends CI_Model
         $this->full_name = $post["full_name"];
         $this->username = $post["username"];
         // $this->password = password_hash($post["password"], PASSWORD_DEFAULT);
-        $this->password = sha1($post["password"]);
+        $this->password = ($post["password"]);
         $this->email = $post["email"];
         $this->role = $post["role"];
         $this->phone = $post["phone"];
@@ -89,7 +89,7 @@ class User_model extends CI_Model
         $this->full_name = $post["full_name"];
         $this->username = $post["username"];
         // $this->password = password_hash($post["password"], PASSWORD_DEFAULT);
-        $this->password = ($post["password"]);
+        // $this->password = ($post["password"]);
         $this->email = $post["email"];
         $this->role = $post["role"];
         $this->phone = $post["phone"];
@@ -205,5 +205,6 @@ class User_model extends CI_Model
         // $this->is_active = $post["is_active"] ?? "1";
         $this->db->insert($this->_table, $this);
     }
+
 
 }

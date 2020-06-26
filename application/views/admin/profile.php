@@ -20,6 +20,8 @@
 
 			  <div class="row">
           <div class="col-12">
+		  <?php echo $this->session->flashdata('changepw'); ?>
+
             <!-- Custom Tabs -->
             <div class="card">
               <div class="card-header d-flex p-0">
@@ -115,7 +117,34 @@
                   </div>
                   <!-- /.tab-pane -->
                   <div class="tab-pane" id="tab_3">
-                    Iki isine ganti password
+				  <form action="<?php echo base_url(); ?>index.php/admin/profile/changepassword" method="post" >
+				  	<div class="row ml-5 mr-5 m-4" >
+						<div class="col-sm-5 text-right">
+							<label>Current Password : </label>
+						</div>
+						<div class="col-sm-5 mb-3">
+							<input class="form-control" type="password" name="currentpw" id="currentpw"/>
+							<?= form_error('currentpw', '<small class="text-danger pl-3">', '</small>'); ?>
+						</div>
+						<div class="col-sm-5 text-right">
+							<label>New Password : </label>
+						</div>
+						<div class="col-sm-5 mb-3">
+							<input class="form-control" type="password" name="newpw" id="newpw"/>
+							<?= form_error('newpw', '<small class="text-danger pl-3">', '</small>'); ?>
+						</div>
+						<div class="col-sm-5 text-right">
+							<label>Repeat Password : </label>
+						</div>
+						<div class="col-sm-5 mb-3">
+							<input class="form-control" type="password" name="repeatpw" id="repeatpw"/>
+							<?= form_error('repeatpw', '<small class="text-danger pl-3">', '</small>'); ?>
+						</div>
+					</div>
+					<center>
+					<input class="btn btn-success" type="submit" name="btn" value="Save" />
+					</center>
+					</form>
                   </div>
                   <!-- /.tab-pane -->
                 </div>

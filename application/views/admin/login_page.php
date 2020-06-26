@@ -27,6 +27,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-5 mx-auto clkt">
+            <?php echo $this->session->flashdata('ihi'); ?>
                 <form action="<?= site_url('admin/login') ?>" method="POST">
                     <div class="form-group">
                         <label for="username">Username</label>
@@ -42,7 +43,7 @@
                                 <input type="checkbox" class="custom-control-input" name="rememberme" id="rememberme" />
                                 <label class="custom-control-label" for="rememberme"> Remember me</label>
                             </div>
-                            <a href="<?= site_url('reset_password') ?>">I forgot my password</a>
+                            <a href="<?= site_url('admin/forgot_password') ?>">I forgot my password</a>
                         </div>
                     </div>
                     <div class="form-group">

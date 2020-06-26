@@ -46,7 +46,7 @@
 									<?php foreach ($clients as $client): ?>
 									<tr>
 										<td>
-											<img src="<?php echo base_url('upload/client/'.$client->image) ?>" width="64" />
+											<img src="<?php echo base_url('upload/client/'.$client->image) ?>" width="40" height="40"/>
 										</td>
 										<td width="150">
 											<?php echo $client->name ?>
