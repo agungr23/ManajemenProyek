@@ -53,6 +53,7 @@ class Tasksfu extends CI_Controller
 
         // if ($validation->run()) {
             $task->update();
+            $task->_dateuploaded();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         // }
         // if ($task->update()) {
@@ -82,23 +83,34 @@ class Tasksfu extends CI_Controller
         }
     }
 
-    private function uploadFile()
-	{
-		$config['upload_path']          = './upload/project/';
-		$config['allowed_types']        = 'zip|rar';
-		$config['file_name']            = $this->fungsi->user_login()->full_name;
-		$config['overwrite']			= true;
-		$config['max_size']             = 102400; // 100MB
-		// $config['max_width']            = 1024;
-		// $config['max_height']           = 768;
+    private function _sendEmail() 
+    {
+        $config = [
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_user' => 'agungr439@gmail.com',
+            'smtp_pass' => 'muhammad23',
+            'smtp_port' => 465,
+            'mailtype' => 'html',
+            'charset' => 'utf-8',
+            'newline' => "\r\n"
+        ];
 
-		$this->load->library('upload', $config);
+        $this->load->library('email', $config);
 
-		if ($this->upload->do_upload('image')) {
-			return $this->upload->data("file_name");
-		}
-		
-		return "default.zip";
+        $this->email->from('agungr439@gmail.com', 'Muhammad Agung Ramadhan');
+        $this->email->to($this->input->post('emailsend'));
+        $this->email->subject('Task Turned in ');
+        $this->email->message('jhon turned in the task. lets check now : <a 
+        href="'.base_url().'admin/login">Click Here</a>');
+        
+
+        if($this->email->send()) {
+            return true;
+        } else {
+            echo $this->email->print_debugger();
+            die;
+        }
     }
 
     

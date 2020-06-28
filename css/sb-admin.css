@@ -4,13 +4,14 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-sb-admin/blob/master/LICENSE)
  */
 
-html {
+ html {
   position: relative;
   min-height: 100%;
 }
 
 body {
   height: 100%;
+  font-size: 0.9rem;
 }
 
 #wrapper {
@@ -135,7 +136,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 
 .sidebar {
   width: 90px !important;
-  background-color: #212529;
+  background-color: #1c2a48;
   min-height: calc(100vh - 56px);
 }
 
@@ -160,6 +161,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   transform: none !important;
   left: calc(90px + 0.5rem) !important;
   margin: 0;
+  font-size: 0.9rem;
 }
 
 .sidebar .nav-item .dropdown-menu.dropup {
@@ -187,6 +189,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 @media (min-width: 768px) {
   .sidebar {
     width: 225px !important;
+    transition: 0.5s;
   }
   .sidebar .nav-item .nav-link {
     display: block;
@@ -196,7 +199,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
     width: 225px;
   }
   .sidebar .nav-item .nav-link span {
-    font-size: 1rem;
+    font-size: 0.9rem;
     display: inline;
   }
   .sidebar .nav-item .dropdown-menu {
@@ -375,4 +378,56 @@ body.sidebar-toggled footer.sticky-footer {
   body.sidebar-toggled footer.sticky-footer {
     width: calc(100% - 90px);
   }
+}
+
+@media (min-width: 992px) {
+  .animate-menu {
+    animation-duration: 0.3s;
+    -webkit-animation-duration: 0.3s;
+    animation-fill-mode: both;
+    -webkit-animation-fill-mode: both;
+  }
+}
+@keyframes slideIn-menu {
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+  100% {
+    transform:translateY(0rem);
+    opacity: 1;
+  }
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes slideIn-menu {
+  0% {
+    -webkit-transform: transform;
+    -webkit-opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    -webkit-opacity: 1;
+  }
+  0% {
+    -webkit-transform: translateY(1rem);
+    -webkit-opacity: 0;
+  }
+}
+.slideIn-menu {
+  -webkit-animation-name: slideIn-menu;
+  animation-name: slideIn-menu;
+}
+
+
+.navbar {
+  background-color: #1c2a48;
+}
+.navbar-brand {
+  color: #fff;
+}
+.btn {
+  font-size: 0.9rem;
 }

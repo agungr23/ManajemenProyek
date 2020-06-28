@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-dark static-top bg-dark">
+<nav class="navbar navbar-expand nav-dark static-top">
 
     <!-- <a href="<?php echo site_url('admin') ?> -->
         <img src="<?php echo base_url('assets/img/kodegiri_putih.png')?>" width="70" height="45" href="<?php echo site_url('admin') ?>">
@@ -53,12 +53,12 @@
         </li> -->
 
         <li class="nav-item dropdown no-arrow ">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+            <a class="nav-link dropdown-toggle" style="color: #fff;" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
                 <img class="rounded-circle" src="<?php echo base_url('upload/user/'.$this->fungsi->user_login()->photo) ?>" width="30" height="30">
              <?php echo $this->fungsi->user_login()->username ?> 
             </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <div class="dropdown-menu dropdown-menu-right animate-menu slideIn-menu" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="<?php echo site_url('admin/profile') ?>">Profile</a>
                 <!-- <a class="dropdown-item" href="#">Activity Log</a> -->
                 <div class="dropdown-divider"></div>
@@ -66,13 +66,7 @@
             </div>
         </li>
 
-        <!-- <li class="nav-item dropdown no-arrow ">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
-                <img class="rounded-circle" src="<?php echo base_url('upload/user/'.$this->fungsi->user_login()->photo) ?>" width="30">
-             <!-- <?php echo $this->fungsi->user_login()->role ?> -->
-            </a>
-        </li> -->
+        
     </ul>
     </form>
 

@@ -32,6 +32,7 @@ class Tasks extends CI_Controller
 
         if ($validation->run()) {
             $task->save();
+            $this->_sendEmail();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
 
@@ -76,5 +77,36 @@ class Tasks extends CI_Controller
             redirect(site_url('admin/tasks'));
         }
     }
+
+    private function _sendEmail() 
+    {
+        $config = [
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_user' => 'agungr439@gmail.com',
+            'smtp_pass' => 'muhammad23',
+            'smtp_port' => 465,
+            'mailtype' => 'html',
+            'charset' => 'utf-8',
+            'newline' => "\r\n"
+        ];
+
+        $this->load->library('email', $config);
+
+        $this->email->from('agungr439@gmail.com', 'Muhammad Agung Ramadhan');
+        $this->email->to($this->input->post('emailsend'));
+        $this->email->subject('New Task from Kodegiri');
+        $this->email->message('you have a new task. lets check now : <a 
+        href="'.base_url().'admin/login">Click Here</a>');
+        
+
+        if($this->email->send()) {
+            return true;
+        } else {
+            echo $this->email->print_debugger();
+            die;
+        }
+    }
+
     
 }

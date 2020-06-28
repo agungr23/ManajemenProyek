@@ -21,15 +21,15 @@ class Task_model extends CI_Model
 
             ['field' => 'instruction',
             'label' => 'Instruction',
-            'rules' => 'required']
+            'rules' => 'required'],
             
-            // ['field' => 'industry',
-            // 'label' => 'Industry',
-            // 'rules' => 'required'],
+            ['field' => 'project_name',
+            'label' => 'project',
+            'rules' => 'required'],
 
-            // ['field' => 'email',
-            // 'label' => 'Email',
-            // 'rules' => 'required']
+            ['field' => 'user_name',
+            'label' => 'person',
+            'rules' => 'required']
 
         ];
     }
@@ -88,9 +88,12 @@ class Task_model extends CI_Model
     
     private function _uploadFile()
 	{
+        $post = $this->input->post();
+        // $this->asd = $post["asd"];
+        // $asd = $this->input->get('asd');
 		$config['upload_path']          = './upload/project/';
 		$config['allowed_types']        = 'rar|zip';
-		$config['file_name']            = $this->task_name.'-'.$this->fungsi->user_login()->full_name;
+		$config['file_name']            = $this->input->post('asd').'-'.$this->task_name.'-'.$this->fungsi->user_login()->full_name;
 		$config['overwrite']			= true;
 		$config['max_size']             = 102400; // 100MB
 		// $config['max_width']            = 1024;
@@ -205,6 +208,23 @@ class Task_model extends CI_Model
         return $query;
     }
 
+    public function getfile()
+    {
+        // return $this->db->get($this->_table)->result();
+        return $this->db->query("SELECT task.task_id as task_id,task.task_name,task.instruction,task_status.status as status,
+        project.name as proj_name,users.full_name as person,task.user_id as user_id,task.file as file,task.date_uploaded as dateuploaded
+        FROM task join task_status join users join project on task.project_id=project.project_id 
+        AND task.task_status_id=task_status.task_status_id AND task.user_id=users.user_id 
+        WHERE task.file != 'default.zip'")->result();
+    }
 
+    public function _dateuploaded(){
+        $post = $this->input->post();
+        $asd = $post["id"];
+        $sql = "UPDATE task SET date_uploaded=now() WHERE task_id='{$asd}'";
+        $this->db->query($sql);
+    }
+
+    
 
 }

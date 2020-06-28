@@ -18,9 +18,25 @@ class File extends CI_Controller
 
     public function index()
     {
-        $data["tasks"] = $this->task_model->getAll();
+        $data["files"] = $this->task_model->getfile();
         $this->load->view("admin/file", $data);
-        // $data1["tasks"] = $this->task_model->gettask();
-        // $this->load->view("admin/task/listfu", $data1);
     }
+
+    function download($id)
+	{
+		$data = $this->db->get_where('task',['task_id'=>$id])->row();
+		force_download('upload/project/'.$data->file,NULL);
+    }
+    
+    function delete($id)
+	{
+		$data = $this->db->get_where('task',['task_id'=>$id])->row();
+        unlink('upload/project/'.$data->file);
+
+        $sql = "UPDATE task SET file='default.zip' WHERE task_id='$id'";
+        $this->db->query($sql);
+        $this->session->set_flashdata('filedel', '<div class="alert alert-success" role="alert">
+                data has been deleted !</div>');
+        redirect('admin/file');
+	}
 }

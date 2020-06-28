@@ -52,7 +52,6 @@
 							<div class="form-group">
 								<label>Status</label>
 								<select name="task_status_id" class="form-control">
-									<option value="">- pilih -</option>
 									<?php foreach ($tasks_status as $task_status) {
 										echo '<option value="'.$task_status->task_status_id.'">'.$task_status->status.'</option>';
 									}?>
@@ -64,14 +63,14 @@
 							</div>
 							<div class="form-group input-group">
 								<input type="hidden" name="project_id" id="project_id">
-								<input type="text" name="project_name" id="project_name" class="form-control <?php echo form_error('project_id') ? 'is-invalid':'' ?>">
+								<input type="text" name="project_name" id="project_name" class="form-control <?php echo form_error('project_name') ? 'is-invalid':'' ?>">
 								<span class="input-group-btn">
 									<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-project">
 										<i class="fa fa-search"></i>
 									</button>
 								</span>
 								<div class="invalid-feedback">
-									<?php echo form_error('project_id') ?>
+									<?php echo form_error('project_name') ?>
 								</div>
 							</div>
 
@@ -80,14 +79,15 @@
 							</div>
 							<div class="form-group input-group">
 								<input type="hidden" name="user_id" id="user_id">
-								<input type="text" name="user_name" id="user_name" class="form-control <?php echo form_error('user_id') ? 'is-invalid':'' ?>">
+								<input type="hidden" name="emailsend" id="emailsend">
+								<input type="text" name="user_name" id="user_name" class="form-control <?php echo form_error('user_name') ? 'is-invalid':'' ?>">
 								<span class="input-group-btn">
 									<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-user">
 										<i class="fa fa-search"></i>
 									</button>
 								</span>
 								<div class="invalid-feedback">
-									<?php echo form_error('user_id') ?>
+									<?php echo form_error('user_name') ?>
 								</div>
 							</div>
 
@@ -205,7 +205,7 @@ $(document).ready(function() {
 					<td><?php echo $user->role ?></td>
 					<td>
 						<button class="btn btn-xs btn-info" id="select1" data-id="<?php echo $user->user_id ?>"
-						data-name="<?php echo $user->full_name ?>">
+						data-name="<?php echo $user->full_name ?>" data-email="<?php echo $user->email ?>">
 							<i class="fa fa-check"></i> Select
 						</button>
 					</td>
@@ -223,8 +223,10 @@ $(document).ready(function() {
 	$(document).on('click','#select1', function() {
 		var user_id = $(this).data('id');
 		var user_name = $(this).data('name');
+		var emailsend = $(this).data('email');
 		$('#user_id').val(user_id);
 		$('#user_name').val(user_name);
+		$('#emailsend').val(emailsend);
 		$('#modal-user').modal('hide');
 		
 	})

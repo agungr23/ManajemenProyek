@@ -23,7 +23,7 @@ class Project_model extends CI_Model
 
             ['field' => 'price',
             'label' => 'Price',
-            'rules' => 'numeric'],
+            'rules' => 'numeric|required'],
             
             ['field' => 'description',
             'label' => 'Description',

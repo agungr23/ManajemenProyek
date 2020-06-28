@@ -55,6 +55,7 @@
 								</thead>
 								<tbody>
 									<?php foreach ($tasks as $task): ?>
+										<input type="hidden" id="asd" name="asd" value="<?php echo $task->proj_name ?>" />
 									<tr>
 										<td>
 											<?php echo $task->task_name ?>
@@ -89,9 +90,15 @@
                                              data-userid="<?php echo $task->user_id; ?>">
                                              <i class="fas fa-upload"></i> Upload File</a> -->
 
-                                             <a href="<?php //echo site_url('admin/tasksfu/'.$task->task_id) ?>"
-											 class="btn btn-small btn-info" data-toggle="modal" data-target="#modal-ut<?php echo $task->task_id; ?>">
-                                             <i class="fas fa-upload"></i> Upload File</a>
+											 <?php if($task->status == "Done"): ?>
+												<a class="btn btn-small btn-info isDisabled" >
+												<i class="fas fa-upload isDisabled"></i> Upload File</a>
+											 <?php else: ?>
+                                                <a href="<?php //echo site_url('admin/tasksfu/'.$task->task_id) ?>"
+												class="btn btn-small btn-info" data-toggle="modal" data-target="#modal-ut<?php echo $task->task_id; ?>" <?php echo $task->proj_name ?>>
+												<i class="fas fa-upload"></i> Upload File</a>
+                                            <?php endif; ?>
+                                             
 											 <?php if($task->status == "Done"): ?>
 												<a href="<?php echo base_url().'admin/invoice?id='.$task->task_id ?>" 
 												class="btn btn-small btn-success"><i class="fas fa-file-invoice-dollar"></i> Invoice</a>
@@ -141,7 +148,7 @@
 </html>
 
 <?php foreach ($tasks as $task1): ?>
-<div class="modal fade" id="modal-ut<?php echo $task1->task_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="modal-ut<?php echo $task1->task_id;?>"<?php echo $task1->proj_name ?> tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -153,6 +160,7 @@
       <form action="<?php echo base_url(); ?>index.php/admin/tasksfu/editt" method="post" enctype="multipart/form-data">
       <!-- <form action="<?php echo site_url('admin/Tasksfu/edit/'.$task1->task_id) ?>" method="post" > -->
       <div class="modal-body">
+	  <input type="hidden" name="asd" value="<?php echo $task1->proj_name; ?>" class="form-control" />
         
         <!-- <input type="text" name="id" value="<?php //echo $task->task_id ?>" /> -->
         <input type="hidden" name="id" value="<?php echo $task1->task_id; ?>" class="form-control" />

@@ -24,21 +24,12 @@
 
 			<div class="container-fluid">
 
-				<?php //$this->load->view("admin/_partials/breadcrumb.php") ?>
                 <div id="content-wrapper">
-				<?php if ($this->session->flashdata('success')): ?>
-				<div class="alert alert-success" role="alert">
-					<?php echo $this->session->flashdata('success'); ?>
-				</div>
-				<?php endif; ?>
+                <?php echo $this->session->flashdata('filedel'); ?>
 
 				<!-- DataTables -->
 				<div class="card mb-3">
-					<div class="card-header">
-						<?php if($this->fungsi->user_login()->role == "admin") { ?>
-						<a href="<?php echo site_url('admin/tasks/add') ?>"><i class="fas fa-plus"></i> Add New</a>
-						<?php } ?>
-					</div>
+					
 					<div class="card-body">
 
 						<div class="table-responsive">
@@ -48,25 +39,31 @@
 										<th>File</th>
                                         <th>Task</th>
                                         <th>Project</th>
+                                        <th>Date Uploaded</th>
 										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($tasks as $task): ?>
+									<?php foreach ($files as $file): ?>
 									<tr>
 										<td>
-											<?php echo $task->file ?>
+											<?php echo $file->file ?>
 										</td>
                                         <td>
-											<?php echo $task->task_name ?>
+											<?php echo $file->task_name ?>
 										</td>
                                         <td>
-											<?php echo $task->proj_name ?>
+											<?php echo $file->proj_name ?>
+                                        </td>
+                                        <td>
+											<?php echo $file->dateuploaded ?>
 										</td>
-										<td width="230">
+										<td width="210">
 
-                                             <a href="<?php //echo site_url('admin/tasksfu/'.$task->task_id) ?>"
-											 class="btn btn-small btn-info" ><i class="fas fa-upload"></i> Upload File</a>
+                                             <a href="<?php echo site_url('admin/file/download/'.$file->task_id) ?>"
+                                             class="btn btn-small btn-success" ><i class="fa fa-download"></i> Download</a>
+                                             <a onclick="deleteConfirm('<?php echo site_url('admin/file/delete/'.$file->task_id) ?>')" href="#!"
+											 class="btn btn-small btn-danger" ><i class="fa fa-trash"></i> Delete</a>
 										</td>
 									</tr>
 									<?php endforeach; ?>

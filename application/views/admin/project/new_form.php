@@ -105,7 +105,6 @@
 							<div class="form-group">
 								<label>Status</label>
 								<select name="proj_status_id" class="form-control">
-									<option value="">- pilih -</option>
 									<?php foreach ($projects_status as $project_status) {
 										echo '<option value="'.$project_status->proj_status_id.'">'.$project_status->status.'</option>';
 									}?>

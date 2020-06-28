@@ -26,7 +26,15 @@ class User_model extends CI_Model
             
             ['field' => 'email',
             'label' => 'Email',
-            'rules' => 'required|valid_email']
+            'rules' => 'required|valid_email'],
+
+            ['field' => 'username',
+            'label' => 'username',
+            'rules' => 'required'],
+
+            ['field' => 'phone',
+            'label' => 'phone',
+            'rules' => 'required']
             
         ];
     }
