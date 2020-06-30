@@ -70,41 +70,46 @@
 								</select>
 							</div>
 
-							<div>
-								<label for="name">Pilih Project*</label>
-							</div>
-							<div class="form-group input-group">
-								<input type="hidden" name="project_id" id="project_id" value="<?php foreach($projects as $project){if($task->project_id==$project->project_id) echo $project->project_id;}?>">
-								<input type="text" name="project_name" id="project_name" class="form-control <?php echo form_error('project_id') ? 'is-invalid':'' ?>"
-								value="<?php foreach($projects as $project){if($task->project_id==$project->project_id) echo $project->name;}?>">
-								<span class="input-group-btn">
-									<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-project">
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
-								<div class="invalid-feedback">
-									<?php echo form_error('project_id') ?>
+							<div class="row">
+								<div class="col-sm-6">
+									<div>
+										<label for="name">Pilih Project*</label>
+									</div>
+									<div class="form-group input-group">
+										<input type="hidden" name="project_id" id="project_id" value="<?php foreach($projects as $project){if($task->project_id==$project->project_id) echo $project->project_id;}?>">
+										<input type="text" name="project_name" id="project_name" class="form-control <?php echo form_error('project_id') ? 'is-invalid':'' ?>"
+										value="<?php foreach($projects as $project){if($task->project_id==$project->project_id) echo $project->name;}?>">
+										<span class="input-group-btn">
+											<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-project">
+												<i class="fa fa-search"></i>
+											</button>
+										</span>
+										<div class="invalid-feedback">
+											<?php echo form_error('project_id') ?>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div>
+										<label for="name">Pilih Person*</label>
+									</div>
+									<div class="form-group input-group">
+										<input type="hidden" name="user_id" id="user_id" value="<?php foreach($users as $user){if($task->user_id==$user->user_id) echo $user->user_id;}?>">
+										<input type="text" name="user_name" id="user_name" class="form-control <?php echo form_error('user_id') ? 'is-invalid':'' ?>"
+										value="<?php foreach($users as $user){if($task->user_id==$user->user_id) echo $user->full_name;}?>">
+										<span class="input-group-btn">
+											<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-user">
+												<i class="fa fa-search"></i>
+											</button>
+										</span>
+										<div class="invalid-feedback">
+											<?php echo form_error('user_id') ?>
+										</div>
+									</div>
 								</div>
 							</div>
 
-							<div>
-								<label for="name">Pilih Person*</label>
-							</div>
-							<div class="form-group input-group">
-								<input type="hidden" name="user_id" id="user_id" value="<?php foreach($users as $user){if($task->user_id==$user->user_id) echo $user->user_id;}?>">
-								<input type="text" name="user_name" id="user_name" class="form-control <?php echo form_error('user_id') ? 'is-invalid':'' ?>"
-								value="<?php foreach($users as $user){if($task->user_id==$user->user_id) echo $user->full_name;}?>">
-								<span class="input-group-btn">
-									<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-user">
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
-								<div class="invalid-feedback">
-									<?php echo form_error('user_id') ?>
-								</div>
-							</div>
-
-							<input class="btn btn-success" type="submit" name="btn" value="Save" />
+							<center><input class="btn btn-success" type="submit" name="btn" value="Save" /></center>
 						</form>
 
 					</div>

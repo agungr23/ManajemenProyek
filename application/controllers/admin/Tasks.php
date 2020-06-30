@@ -8,6 +8,7 @@ class Tasks extends CI_Controller
     {
         parent::__construct();
         $this->load->model("task_model");
+        $this->load->model("email_model");
         $this->load->model("project_model");
         $this->load->model("task_status_model");
         $this->load->model("user_model");
@@ -40,7 +41,8 @@ class Tasks extends CI_Controller
         $user = $this->user_model->getAll();
         $project = $this->project_model->getAll();
         $task_status = $this->task_status_model->getAll();
-        $data = ['users' => $user, 'tasks_status' => $task_status, 'projects' => $project];
+        $email = $this->email_model->getAll();
+        $data = ['users' => $user, 'tasks_status' => $task_status, 'projects' => $project, 'email' => $email];
         $this->load->view("admin/task/new_form", $data);
     }
 
@@ -81,19 +83,19 @@ class Tasks extends CI_Controller
     private function _sendEmail() 
     {
         $config = [
-            'protocol' => 'smtp',
-            'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_user' => 'agungr439@gmail.com',
-            'smtp_pass' => 'muhammad23',
-            'smtp_port' => 465,
-            'mailtype' => 'html',
-            'charset' => 'utf-8',
+            'protocol' => $this->input->post('protocol'),
+            'smtp_host' => $this->input->post('smtp_host'),
+            'smtp_user' => $this->input->post('smtp_user'),
+            'smtp_pass' => $this->input->post('smtp_pass'),
+            'smtp_port' => $this->input->post('smtp_port'),
+            'mailtype' => $this->input->post('mailtype'),
+            'charset' => $this->input->post('charset'),
             'newline' => "\r\n"
         ];
 
         $this->load->library('email', $config);
 
-        $this->email->from('agungr439@gmail.com', 'Muhammad Agung Ramadhan');
+        $this->email->from($this->input->post('smtp_user'), $this->input->post('name'));
         $this->email->to($this->input->post('emailsend'));
         $this->email->subject('New Task from Kodegiri');
         $this->email->message('you have a new task. lets check now : <a 

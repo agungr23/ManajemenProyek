@@ -24,6 +24,9 @@
 						<?php if($this->fungsi->user_login()->role == "admin") { ?>
 						<a href="<?php echo site_url('admin/clients/add') ?>"><i class="fas fa-plus"></i> Add New</a>
 						<?php } ?>
+						<?php if($this->fungsi->user_login()->role == "admin") { ?>
+						<a href="<?php echo site_url('admin/forprint/client') ?>" class="float-right"><i class="fas fa-print "></i> Print</a>
+						<?php } ?>
 					</div>
 					<div class="card-body">
 

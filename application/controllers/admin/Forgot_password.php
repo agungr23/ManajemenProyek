@@ -5,22 +5,24 @@ class Forgot_password extends CI_Controller {
     {
         parent::__construct();
         $this->load->library('form_validation');
-		$this->load->model("user_model");
+        $this->load->model("user_model");
+        $this->load->model("email_model");
 		// if($this->user_model->isNotLogin()) redirect(site_url('admin/login'));
 
 	}
 
 	public function index()
 	{
-        // load view admin/overview.php
-        $this->load->view("admin/forgot_password");
+        $data["email"] = $this->email_model->getAll();
+        $this->load->view("admin/forgot_password", $data);
     }
     
     public function forgotpassword()
     {
         $this->form_validation->set_rules('forgot_email','Email','trim|required|valid_email');
         if($this->form_validation->run() == false) {
-            $this->load->view("admin/forgot_password");
+            $data["email"] = $this->email_model->getAll();
+            $this->load->view("admin/forgot_password", $data);
         } else {
             $email = $this->input->post('forgot_email');
             $sip = $this->db->get_where('users', ['email' => $email])->row_array();
@@ -51,19 +53,19 @@ class Forgot_password extends CI_Controller {
     private function _sendEmail($token, $type) 
     {
         $config = [
-            'protocol' => 'smtp',
-            'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_user' => 'agungr439@gmail.com',
-            'smtp_pass' => 'muhammad23',
-            'smtp_port' => 465,
-            'mailtype' => 'html',
-            'charset' => 'utf-8',
+            'protocol' => $this->input->post('protocol'),
+            'smtp_host' => $this->input->post('smtp_host'),
+            'smtp_user' => $this->input->post('smtp_user'),
+            'smtp_pass' => $this->input->post('smtp_pass'),
+            'smtp_port' => $this->input->post('smtp_port'),
+            'mailtype' => $this->input->post('mailtype'),
+            'charset' => $this->input->post('charset'),
             'newline' => "\r\n"
         ];
 
         $this->load->library('email', $config);
 
-        $this->email->from('agungr439@gmail.com', 'Muhammad Agung Ramadhan');
+        $this->email->from($this->input->post('smtp_user'), $this->input->post('name'));
         $this->email->to($this->input->post('forgot_email'));
 
         if ($type == 'forgot') {

@@ -7,6 +7,7 @@ class Projects extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->helper('rupiah_helper');
         $this->load->model("project_model");
         $this->load->model("task_model");
         $this->load->model("client_model");

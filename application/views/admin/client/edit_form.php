@@ -47,61 +47,71 @@
 									<?php echo form_error('image') ?>
 								</div>
 							</div>
-							
-							<div class="form-group">
-								<label for="name">Name*</label>
-								<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
-								 type="text" name="name" placeholder="Client name" value="<?php echo $client->name ?>"/>
-								<div class="invalid-feedback">
-									<?php echo form_error('name') ?>
+
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="name">Name*</label>
+										<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
+										type="text" name="name" placeholder="Client name" value="<?php echo $client->name ?>"/>
+										<div class="invalid-feedback">
+											<?php echo form_error('name') ?>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="name">Email*</label>
+										<input class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>" 
+										type="text" name="email" placeholder="Email" value="<?php echo $client->email ?>">
+										<div class="invalid-feedback">
+											<?php echo form_error('email') ?>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="name">Industry*</label>
+										<input class="form-control <?php echo form_error('industry') ? 'is-invalid':'' ?>"
+										type="text" name="industry" placeholder="Industry" value="<?php echo $client->industry ?>"/>
+										<div class="invalid-feedback">
+											<?php echo form_error('industry') ?>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="name">Status*</label>
+										<select name="status" class="form-control">
+											<option value="<?php echo $client->status ?>"><?php echo $client->status ?></option>
+											<?php if($client->status == "Stuck"): ?>
+												<option value="In Progress">In Progress</option>
+												<option value="Done">Done</option>
+											<?php elseif($client->status == "In Progress"): ?>
+												<option value="Stuck">Stuck</option>
+												<option value="Done">Done</option>
+											<?php else: ?>
+												<option value="In Progress">In Progress</option>
+												<option value="Stuck">Stuck</option>
+											<?php endif; ?>
+										</select>
+									</div>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label for="name">Address*</label>
-								<input class="form-control <?php echo form_error('address') ? 'is-invalid':'' ?>"
-								 type="text" name="address" placeholder="Address" value="<?php echo $client->address ?>"/>
+								<textarea class="form-control <?php echo form_error('address') ? 'is-invalid':'' ?>"
+								 name="address" placeholder="Address" value="<?php echo $client->address ?>"><?php echo $client->address ?></textarea>
 								<div class="invalid-feedback">
 									<?php echo form_error('address') ?>
 								</div>
 							</div>
 
-							<div class="form-group">
-								<label for="name">Industry*</label>
-								<input class="form-control <?php echo form_error('industry') ? 'is-invalid':'' ?>"
-								 type="text" name="industry" placeholder="Industry" value="<?php echo $client->industry ?>"/>
-								<div class="invalid-feedback">
-									<?php echo form_error('industry') ?>
-								</div>
-							</div>
-
-							<div class="form-group">
-  								<label for="name">Email*</label>
-								<input class="form-control <?php echo form_error('email') ? 'is-invalid':'' ?>" 
-								type="text" name="email" placeholder="Email" value="<?php echo $client->email ?>">
-								<div class="invalid-feedback">
-									<?php echo form_error('email') ?>
-								</div>
-							</div>
-
-							<div class="form-group">
-  								<label for="name">Status*</label>
-								  <select name="status" class="form-control">
-								  	<option value="<?php echo $client->status ?>"><?php echo $client->status ?></option>
-									<?php if($client->status == "Stuck"): ?>
-										<option value="In Progress">In Progress</option>
-										<option value="Done">Done</option>
-                                    <?php elseif($client->status == "In Progress"): ?>
-                                        <option value="Stuck">Stuck</option>
-										<option value="Done">Done</option>
-                                    <?php else: ?>
-                                        <option value="In Progress">In Progress</option>
-										<option value="Stuck">Stuck</option>
-                                    <?php endif; ?>
-								</select>
-							</div>
-
-							<input class="btn btn-success" type="submit" name="btn" value="Save" />
+							<center><input class="btn btn-success" type="submit" name="btn" value="Save" /></center>
 						</form>
 
 					</div>

@@ -29,6 +29,12 @@
 
 				<!-- DataTables -->
 				<div class="card mb-3">
+					<div class="card-header">
+						<b>File Tasks</b>
+						<?php if($this->fungsi->user_login()->role == "admin") { ?>
+						<a href="<?php echo site_url('admin/file/zip') ?>" class="float-right"><i class="fa fa-file-archive"></i> Backup All Files</a>
+						<?php } ?>
+					</div>
 					
 					<div class="card-body">
 

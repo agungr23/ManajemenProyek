@@ -37,34 +37,28 @@
 
 							<input type="hidden" name="id" value="<?php echo $project->project_id ?>" />
 
-							<div class="form-group">
-								<label for="name">Name*</label>
-								<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
-								 type="text" name="name" placeholder="Project name" value="<?php echo $project->name ?>"/>
-								<div class="invalid-feedback">
-									<?php echo form_error('name') ?>
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+									<label for="name">Name*</label>
+										<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
+										type="text" name="name" placeholder="Project name" value="<?php echo $project->name ?>"/>
+										<div class="invalid-feedback">
+											<?php echo form_error('name') ?>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="price">Price*</label>
+										<input class="form-control <?php echo form_error('price') ? 'is-invalid':'' ?>"
+										type="number" name="price" min="0" placeholder="Project price" value="<?php echo $project->price ?>"/>
+										<div class="invalid-feedback">
+											<?php echo form_error('price') ?>
+										</div>
+									</div>
 								</div>
 							</div>
-
-							<div class="form-group">
-								<label for="price">Price*</label>
-								<input class="form-control <?php echo form_error('price') ? 'is-invalid':'' ?>"
-								 type="number" name="price" min="0" placeholder="Project price" value="<?php echo $project->price ?>"/>
-								<div class="invalid-feedback">
-									<?php echo form_error('price') ?>
-								</div>
-							</div>
-
-
-							<!-- <div class="form-group">
-								<label for="name">Photo</label>
-								<input class="form-control-file <?php echo form_error('price') ? 'is-invalid':'' ?>"
-								 type="file" name="image" />
-								<input type="hidden" name="old_image" value="<?php echo $project->image ?>" />
-								<div class="invalid-feedback">
-									<?php echo form_error('image') ?>
-								</div>
-							</div> -->
 
 							<div class="form-group">
 								<label for="name">Description*</label>
@@ -75,52 +69,62 @@
 								</div>
 							</div>
 
-							<div class="form-group">
-  								<label for="name">Date Start*</label>
-								<input class="form-control <?php echo form_error('project_started') ? 'is-invalid':'' ?>" 
-								type="date" name="project_started" placeholder="Project Started" value="<?php echo $project->project_started ?>">
-								<div class="invalid-feedback">
-									<?php echo form_error('project_started') ?>
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="name">Date Start*</label>
+										<input class="form-control <?php echo form_error('project_started') ? 'is-invalid':'' ?>" 
+										type="date" name="project_started" placeholder="Project Started" value="<?php echo $project->project_started ?>">
+										<div class="invalid-feedback">
+											<?php echo form_error('project_started') ?>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="name">Date Ended*</label>
+										<input class="form-control <?php echo form_error('project_ended') ? 'is-invalid':'' ?>" 
+										type="date" name="project_ended" placeholder="Project Ended" value="<?php echo $project->project_ended ?>">
+										<div class="invalid-feedback">
+											<?php echo form_error('project_ended') ?>
+										</div>
+									</div>
 								</div>
 							</div>
 
-							<div class="form-group">
-  								<label for="name">Date Ended*</label>
-								<input class="form-control <?php echo form_error('project_ended') ? 'is-invalid':'' ?>" 
-								type="date" name="project_ended" placeholder="Project Ended" value="<?php echo $project->project_ended ?>">
-								<div class="invalid-feedback">
-									<?php echo form_error('project_ended') ?>
+							<div class="row">
+								<div class="col-sm-6">
+									<div>
+										<label for="name">Pilih Client*</label>
+									</div>
+									<div class="form-group input-group">
+										<input type="hidden" name="client_id" id="client_id" value="<?php foreach($clients as $client){if($project->client_id==$client->client_id) echo $project->client_id;}?>">
+										<!-- <input type="text" name="client_name" id="client_name" class="form-control <?php echo form_error('client_id') ? 'is-invalid':'' ?>"> -->
+											<input type="text" name="client_name" id="client_name" class="form-control <?php echo form_error('client_id') ? 'is-invalid':'' ?>"
+											value="<?php foreach($clients as $client){if($project->client_id==$client->client_id) echo $client->name;}?>">
+										<span class="input-group-btn">
+											<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-item">
+												<i class="fa fa-search"></i>
+											</button>
+										</span>
+										<div class="invalid-feedback">
+											<?php echo form_error('client_id') ?>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label>Status</label>
+										<select name="proj_status_id" class="form-control">
+											<?php foreach ($projects_status as $project_status) {?>
+											<option value="<?php echo $project_status->proj_status_id ?>" <?php if($project->proj_status_id==$project_status->proj_status_id) echo 'selected="selected"'; ?> ><?php echo $project_status->status ?></option>
+											<?php } ?>
+										</select>
+									</div>
 								</div>
 							</div>
 
-							<div>
-								<label for="name">Pilih Client*</label>
-							</div>
-							<div class="form-group input-group">
-								<input type="hidden" name="client_id" id="client_id" value="<?php foreach($clients as $client){if($project->client_id==$client->client_id) echo $project->client_id;}?>">
-								<!-- <input type="text" name="client_name" id="client_name" class="form-control <?php echo form_error('client_id') ? 'is-invalid':'' ?>"> -->
-									<input type="text" name="client_name" id="client_name" class="form-control <?php echo form_error('client_id') ? 'is-invalid':'' ?>"
-									value="<?php foreach($clients as $client){if($project->client_id==$client->client_id) echo $client->name;}?>">
-								<span class="input-group-btn">
-									<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-item">
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
-								<div class="invalid-feedback">
-									<?php echo form_error('client_id') ?>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label>Status</label>
-								<select name="proj_status_id" class="form-control">
-									<?php foreach ($projects_status as $project_status) {?>
-									<option value="<?php echo $project_status->proj_status_id ?>" <?php if($project->proj_status_id==$project_status->proj_status_id) echo 'selected="selected"'; ?> ><?php echo $project_status->status ?></option>
-									<?php } ?>
-								</select>
-							</div>
-
-							<input class="btn btn-success" type="submit" name="btn" value="Save" />
+							<center><input class="btn btn-success" type="submit" name="btn" value="Save" /></center>
 						</form>
 
 					</div>

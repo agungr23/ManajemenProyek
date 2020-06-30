@@ -20,7 +20,7 @@
             background-clip: initial !important;
             background-color: initial !important;
         }
-        .clkt{background-color:rgba(255,255,255,0.5); }
+        .clkt{background-color:rgba(255,255,255,0.3); }
     </style>
 
     <!-- Bootstrap core CSS-->

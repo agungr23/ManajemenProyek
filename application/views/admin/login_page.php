@@ -20,7 +20,7 @@
             background-clip: initial !important;
             background-color: initial !important;
         }
-        .clkt{background-color:rgba(255,255,255,0.5); }
+        .clkt{background-color:rgba(255,255,255,0.3); }
     </style>
 
     <!-- Bootstrap core CSS-->
@@ -43,16 +43,16 @@
                 <form action="<?= site_url('admin/login') ?>" method="POST">
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" class="form-control" name="username" placeholder="Username.." required />
+                        <input type="text" class="form-control" name="username" placeholder="Username.." required value="<?php if(isset($_COOKIE["loginId"])) { echo $_COOKIE["loginId"]; } ?>"/>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" name="password" placeholder="Password.." required />
+                        <input type="password" class="form-control" name="password" placeholder="Password.." required value="<?php if(isset($_COOKIE["loginPass"])) { echo $_COOKIE["loginPass"]; } ?>"/>
                     </div>
                     <div class="form-group">
                         <div class="d-flex justify-content-between">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" name="rememberme" id="rememberme" />
+                                <input type="checkbox" class="custom-control-input" name="rememberme" id="rememberme" <?php if(isset($_COOKIE["loginId"])) { ?> checked="checked" <?php } ?>/>
                                 <label class="custom-control-label" for="rememberme"> Remember me</label>
                             </div>
                             <a href="<?= site_url('admin/forgot_password') ?>">I forgot my password</a>

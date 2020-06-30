@@ -20,7 +20,7 @@
             background-clip: initial !important;
             background-color: initial !important;
         }
-        .clkt{background-color:rgba(255,255,255,0.5); }
+        .clkt{background-color:rgba(255,255,255,0.3); }
     </style>
 
     <!-- Bootstrap core CSS-->
@@ -41,7 +41,18 @@
             <div class="col-12 col-md-5 mx-auto clkt">
             <?php echo $this->session->flashdata('ihi'); ?>
                 <form action="<?php echo base_url(); ?>index.php/admin/forgot_password/forgotpassword" method="POST">
-                    <div class="form-group">
+                    <?php foreach ($email as $email): ?>    
+                        <input type="hidden" name="protocol" id="protocol" value="<?php echo $email->protocol ?>">
+                        <input type="hidden" name="smtp_host" id="smtp_host" value="<?php echo $email->smtp_host ?>">
+                        <input type="hidden" name="smtp_user" id="smtp_user" value="<?php echo $email->smtp_user ?>">
+                        <input type="hidden" name="smtp_pass" id="smtp_pass" value="<?php echo $email->smtp_pass ?>">
+                        <input type="hidden" name="smtp_port" id="smtp_port" value="<?php echo $email->smtp_port ?>">
+                        <input type="hidden" name="mailtype" id="mailtype" value="<?php echo $email->mailtype ?>">
+                        <input type="hidden" name="charset" id="charset" value="<?php echo $email->charset ?>">
+                        <input type="hidden" name="name" id="name" value="<?php echo $email->name ?>">
+                    <?php endforeach; ?>
+
+                    <div class="form-group">                    
                         <input type="text" class="form-control" name="forgot_email" id="forgot_email" placeholder="Enter Your E-mail Address" />
                         <?= form_error('forgot_email', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>

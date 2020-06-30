@@ -31,33 +31,28 @@
 					<div class="card-body">
 
 						<form action="<?php base_url('admin/project/add') ?>" method="post" enctype="multipart/form-data" >
-							<div class="form-group">
-								<label for="name">Name*</label>
-								<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
-								 type="text" name="name" placeholder="Project name" />
-								<div class="invalid-feedback">
-									<?php echo form_error('name') ?>
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="name">Name*</label>
+										<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
+										type="text" name="name" placeholder="Project name" />
+										<div class="invalid-feedback">
+											<?php echo form_error('name') ?>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="price">Price*</label>
+										<input class="form-control <?php echo form_error('price') ? 'is-invalid':'' ?>"
+										type="number" name="price" min="0" placeholder="Project price" />
+										<div class="invalid-feedback">
+											<?php echo form_error('price') ?>
+										</div>
+									</div>
 								</div>
 							</div>
-
-							<div class="form-group">
-								<label for="price">Price*</label>
-								<input class="form-control <?php echo form_error('price') ? 'is-invalid':'' ?>"
-								 type="number" name="price" min="0" placeholder="Project price" />
-								<div class="invalid-feedback">
-									<?php echo form_error('price') ?>
-								</div>
-							</div>
-
-
-							<!-- <div class="form-group">
-								<label for="name">Photo</label>
-								<input class="form-control-file <?php echo form_error('price') ? 'is-invalid':'' ?>"
-								 type="file" name="image" />
-								<div class="invalid-feedback">
-									<?php echo form_error('image') ?>
-								</div>
-							</div> -->
 
 							<div class="form-group">
 								<label for="name">Description*</label>
@@ -68,50 +63,60 @@
 								</div>
 							</div>
 
-							<div class="form-group">
-  								<label for="name">Date Start*</label>
-								<input class="form-control <?php echo form_error('project_started') ? 'is-invalid':'' ?>" 
-								type="date" name="project_started" placeholder="Project Started">
-								<div class="invalid-feedback">
-									<?php echo form_error('project_started') ?>
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="name">Date Start*</label>
+										<input class="form-control <?php echo form_error('project_started') ? 'is-invalid':'' ?>" 
+										type="date" name="project_started" placeholder="Project Started">
+										<div class="invalid-feedback">
+											<?php echo form_error('project_started') ?>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="name">Date Ended*</label>
+										<input class="form-control <?php echo form_error('project_ended') ? 'is-invalid':'' ?>" 
+										type="date" name="project_ended" placeholder="Project Ended">
+										<div class="invalid-feedback">
+											<?php echo form_error('project_ended') ?>
+										</div>
+									</div>
 								</div>
 							</div>
 
-							<div class="form-group">
-  								<label for="name">Date Ended*</label>
-								<input class="form-control <?php echo form_error('project_ended') ? 'is-invalid':'' ?>" 
-								type="date" name="project_ended" placeholder="Project Ended">
-								<div class="invalid-feedback">
-									<?php echo form_error('project_ended') ?>
+							<div class="row">
+								<div class="col-sm-6">
+									<div>
+										<label for="name">Pilih Client*</label>
+									</div>
+									<div class="form-group input-group">
+										<input type="hidden" name="client_id" id="client_id">
+										<input type="text" name="client_name" id="client_name" class="form-control <?php echo form_error('client_id') ? 'is-invalid':'' ?>">
+										<span class="input-group-btn">
+											<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-item">
+												<i class="fa fa-search"></i>
+											</button>
+										</span>
+										<div class="invalid-feedback">
+											<?php echo form_error('client_id') ?>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label>Status</label>
+										<select name="proj_status_id" class="form-control">
+											<?php foreach ($projects_status as $project_status) {
+												echo '<option value="'.$project_status->proj_status_id.'">'.$project_status->status.'</option>';
+											}?>
+										</select>
+									</div>
 								</div>
 							</div>
 
-							<div>
-								<label for="name">Pilih Client*</label>
-							</div>
-							<div class="form-group input-group">
-								<input type="hidden" name="client_id" id="client_id">
-								<input type="text" name="client_name" id="client_name" class="form-control <?php echo form_error('client_id') ? 'is-invalid':'' ?>">
-								<span class="input-group-btn">
-									<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-item">
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
-								<div class="invalid-feedback">
-									<?php echo form_error('client_id') ?>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label>Status</label>
-								<select name="proj_status_id" class="form-control">
-									<?php foreach ($projects_status as $project_status) {
-										echo '<option value="'.$project_status->proj_status_id.'">'.$project_status->status.'</option>';
-									}?>
-								</select>
-							</div>
-
-							<input class="btn btn-success" type="submit" name="btn" value="Save" />
+							<center><input class="btn btn-success" type="submit" name="btn" value="Save" /></center>
 						</form>
 
 					</div>

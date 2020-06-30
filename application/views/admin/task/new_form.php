@@ -31,6 +31,16 @@
 					<div class="card-body">
 
 						<form action="<?php base_url('admin/task/add') ?>" method="post" enctype="multipart/form-data" >
+						<?php foreach ($email as $email): ?>    
+							<input type="hidden" name="protocol" id="protocol" value="<?php echo $email->protocol ?>">
+							<input type="hidden" name="smtp_host" id="smtp_host" value="<?php echo $email->smtp_host ?>">
+							<input type="hidden" name="smtp_user" id="smtp_user" value="<?php echo $email->smtp_user ?>">
+							<input type="hidden" name="smtp_pass" id="smtp_pass" value="<?php echo $email->smtp_pass ?>">
+							<input type="hidden" name="smtp_port" id="smtp_port" value="<?php echo $email->smtp_port ?>">
+							<input type="hidden" name="mailtype" id="mailtype" value="<?php echo $email->mailtype ?>">
+							<input type="hidden" name="charset" id="charset" value="<?php echo $email->charset ?>">
+							<input type="hidden" name="name" id="name" value="<?php echo $email->name ?>">
+                    	<?php endforeach; ?>
 							<div class="form-group">
 								<label for="name">Name*</label>
 								<input class="form-control <?php echo form_error('task_name') ? 'is-invalid':'' ?>"
@@ -58,40 +68,45 @@
 								</select>
 							</div>
 
-							<div>
-								<label for="name">Pilih Project*</label>
-							</div>
-							<div class="form-group input-group">
-								<input type="hidden" name="project_id" id="project_id">
-								<input type="text" name="project_name" id="project_name" class="form-control <?php echo form_error('project_name') ? 'is-invalid':'' ?>">
-								<span class="input-group-btn">
-									<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-project">
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
-								<div class="invalid-feedback">
-									<?php echo form_error('project_name') ?>
+							<div class="row">
+								<div class="col-sm-6">
+									<div>
+										<label for="name">Pilih Project*</label>
+									</div>
+									<div class="form-group input-group">
+										<input type="hidden" name="project_id" id="project_id">
+										<input type="text" name="project_name" id="project_name" class="form-control <?php echo form_error('project_name') ? 'is-invalid':'' ?>">
+										<span class="input-group-btn">
+											<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-project">
+												<i class="fa fa-search"></i>
+											</button>
+										</span>
+										<div class="invalid-feedback">
+											<?php echo form_error('project_name') ?>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div>
+										<label for="name">Pilih Person*</label>
+									</div>
+									<div class="form-group input-group">
+										<input type="hidden" name="user_id" id="user_id">
+										<input type="hidden" name="emailsend" id="emailsend">
+										<input type="text" name="user_name" id="user_name" class="form-control <?php echo form_error('user_name') ? 'is-invalid':'' ?>">
+										<span class="input-group-btn">
+											<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-user">
+												<i class="fa fa-search"></i>
+											</button>
+										</span>
+										<div class="invalid-feedback">
+											<?php echo form_error('user_name') ?>
+										</div>
+									</div>
 								</div>
 							</div>
 
-							<div>
-								<label for="name">Pilih Person*</label>
-							</div>
-							<div class="form-group input-group">
-								<input type="hidden" name="user_id" id="user_id">
-								<input type="hidden" name="emailsend" id="emailsend">
-								<input type="text" name="user_name" id="user_name" class="form-control <?php echo form_error('user_name') ? 'is-invalid':'' ?>">
-								<span class="input-group-btn">
-									<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-user">
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
-								<div class="invalid-feedback">
-									<?php echo form_error('user_name') ?>
-								</div>
-							</div>
-
-							<input class="btn btn-success" type="submit" name="btn" value="Save" />
+							<center><input class="btn btn-success" type="submit" name="btn" value="Save" /></center>
 						</form>
 
 					</div>

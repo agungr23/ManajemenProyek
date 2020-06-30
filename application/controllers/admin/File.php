@@ -7,6 +7,7 @@ class File extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('zip');
         $this->load->model("task_model");
         $this->load->model("project_model");
         $this->load->model("task_status_model");
@@ -38,5 +39,15 @@ class File extends CI_Controller
         $this->session->set_flashdata('filedel', '<div class="alert alert-success" role="alert">
                 data has been deleted !</div>');
         redirect('admin/file');
-	}
+    }
+    
+    function zip()
+    {
+        $path = FCPATH.'/upload/project';
+
+        $this->zip->read_dir($path,FALSE);
+
+        // Download the file to your desktop. Name it "my_backup.zip"
+        $this->zip->download('backup_project.zip');
+    }
 }

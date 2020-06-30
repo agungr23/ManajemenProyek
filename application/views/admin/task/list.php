@@ -22,9 +22,12 @@
 				<div class="card mb-3">
 					<div class="card-header">
 						<a href="<?php echo site_url('admin/tasks/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+						<?php if($this->fungsi->user_login()->role == "admin") { ?>
+						<a href="<?php echo site_url('admin/forprint/task') ?>" class="float-right"><i class="fas fa-print"></i> Print</a>
+						<?php } ?>
 					</div>
 					<div class="card-body">
-
+					
 						<div class="table-responsive">
 							<table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
 								<thead>

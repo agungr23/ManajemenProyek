@@ -43,6 +43,8 @@ class Login extends CI_Controller
         $post = $this->input->post(null, TRUE);
         
         if(isset($post['login'])) {
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
             $this->load->model('user_model');
             $query = $this->user_model->login($post);
             $result = $this->db->get('users');
@@ -55,6 +57,14 @@ class Login extends CI_Controller
                     'last_login'=>date('Y-m-d H:i:s')
                 );
                 $this->session->set_userdata($params);
+                //remember me
+                if(!empty($this->input->post("rememberme"))) {
+                    setcookie ("loginId", $username);  
+                    setcookie ("loginPass", $password);
+                  } else {
+                    setcookie ("loginId",""); 
+                    setcookie ("loginPass","");
+                  }    
                 echo "<script>
                     alert('selamat, login berhasil');
                     window.location='".site_url('admin')."';

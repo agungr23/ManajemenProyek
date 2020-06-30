@@ -24,6 +24,9 @@
 						<?php if($this->fungsi->user_login()->role == "admin") { ?>
 						<a href="<?php echo site_url('admin/projects/add') ?>"><i class="fas fa-plus"></i> Add New</a>
 						<?php } ?>
+						<?php if($this->fungsi->user_login()->role == "admin") { ?>
+						<a href="<?php echo site_url('admin/forprint/project') ?>" class="float-right"><i class="fas fa-print"></i> Print</a>
+						<?php } ?>
 					</div>
 					<div class="card-body">
 
@@ -51,13 +54,16 @@
 											<?php echo $project->name ?>
 										</td>
 										<td>
-											<?php echo $project->price ?>
+											<?php $hia = $project->price ?>
+											<?php 
+											echo indo_currency($hia);
+											?>
 										</td>
 										<!-- <td>
 											<img src="<?php echo base_url('upload/project/'.$project->image) ?>" width="64" />
 										</td> -->
 										<td class="small">
-											<?php echo substr($project->description, 0, 120) ?>...</td>
+											<?php echo $project->description?></td>
 										<td>
 											<?php echo $project->project_started ?>
 										</td>
