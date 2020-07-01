@@ -2,6 +2,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
+<link href="<?php echo base_url('assets/img/kodegiri_putih.png')?>" rel="shortcut icon">
 <title><?php echo SITE_NAME .": ". ucfirst($this->fungsi->user_login()->role) ." - ". ucfirst($this->uri->segment(2)) ?></title>
 
 <!-- Bootstrap core CSS-->
