@@ -103,7 +103,7 @@
 									<div class="form-group">
 										<label for="name">Role*</label>
 										<select name="role" class="form-control">
-											<option value="admin">admin</option>
+											<!-- <option value="admin">admin</option> -->
 											<option value="employee">employee</option>
 											<option value="freelance">freelance</option>
 										</select>

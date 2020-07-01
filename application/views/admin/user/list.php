@@ -71,8 +71,14 @@
 											 class="btn btn-small"><i class="fas fa-tasks"></i> Task</a> -->
 											<a href="<?php echo site_url('admin/users/edit/'.$user->user_id) ?>"
 											 class="btn btn-small btn-info"><i class="fas fa-edit"></i> Edit</a>
-											<a onclick="deleteConfirm('<?php echo site_url('admin/users/delete/'.$user->user_id) ?>')"
+											
+											<?php if($user->role == "admin"): ?>
+                                                <a onclick="deleteConfirm('<?php echo site_url('admin/users/delete/'.$user->user_id) ?>')"
+											 	href="#!" class="btn btn-small btn-danger disabled"><i class="fas fa-trash"></i> Hapus</a>
+                                            <?php else: ?>
+                                                <a onclick="deleteConfirm('<?php echo site_url('admin/users/delete/'.$user->user_id) ?>')"
 											 href="#!" class="btn btn-small btn-danger"><i class="fas fa-trash"></i> Hapus</a>
+                                            <?php endif; ?>
 										</td>
 									</tr>
 									<?php endforeach; ?>
