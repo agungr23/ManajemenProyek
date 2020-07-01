@@ -46,7 +46,7 @@
     </li>
     <?php } ?>
     <?php if(($this->fungsi->user_login()->role == "employee")||($this->fungsi->user_login()->role == "freelance")) { ?>
-    <li class="nav-item <?php echo $this->uri->segment(2) == 'Task' ? 'active': '' ?>">
+    <li class="nav-item <?php echo $this->uri->segment(2) == 'tasksfu' ? 'active': '' ?>">
         <a class="nav-link" href="<?php echo site_url('admin/tasksfu') ?>">
             <i class="fas fa-fw fa-tasks"></i>
             <span>Tasks</span>
@@ -75,7 +75,7 @@
     </li>
     <?php } ?>
     <?php if($this->fungsi->user_login()->role == "admin") { ?>
-    <li class="nav-item dropdown <?php echo $this->uri->segment(2) == 'settings' ? 'active': '' ?>">
+    <li class="nav-item dropdown <?php echo $this->uri->segment(2) == 'email' ? 'active': '' ?>">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             <i class="fas fa-fw fa-cog"></i>
